@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { ArticlePageLayout } from "./article-page-layout";
-import Helmet from 'react-helmet'
+import Helmet from "react-helmet";
 
 import { Intro } from "./article/intro";
 import { Body } from "./article/body";
@@ -39,18 +39,6 @@ const parsePublishedDate = ({ pathname }) => {
     dayOfMonth,
     dayOfWeekEn,
   };
-};
-
-const parseTags = ({ tagsString }) => {
-  console.log(tagsString);
-  if (!tagsString) {
-    return [];
-  }
-  const tags = tagsString.split(",").map((item) => {
-    return item.trim();
-  });
-  //console.log(tags);
-  return tags;
 };
 
 const H2 = ({ id, children }) => {
@@ -93,12 +81,8 @@ const components = {
 
 const Layout = (props) => {
   const { pageContext, children } = props;
-  //const slug = stripPathSlashes(props.location.pathname)
+  const { title, heroImgUrl, tags } = pageContext.frontmatter;
   //console.dir(props, { depth: null });
-  const title = pageContext.frontmatter.title;
-
-  //"/articles/2022-01-12-hogehoge".match(/^\/articles\/(\d+)-(\d+)-(\d+)-.+/)
-  //props.location.pathname.match(/^\/articles\/(\d+)-(\d+)-(\d+)-.+/)
 
   return (
     <MDXProvider components={components}>
@@ -110,8 +94,8 @@ const Layout = (props) => {
         publishedDate={parsePublishedDate({
           pathname: props.location.pathname,
         })}
-        heroImgUrl={pageContext.frontmatter.heroImgUrl}
-        tags={parseTags({ tagsString: pageContext.frontmatter.tags })}
+        heroImgUrl={heroImgUrl}
+        tags={tags}
         articleHtml={children}
       />
     </MDXProvider>

@@ -52,21 +52,12 @@ const styledClassNames = {
       box-sizing: content-box;
       height: 0;
     }
-    pre {
-      overflow: auto;
-    }
-    code,
-    kbd,
-    pre,
-    samp {
+    code {
       ${tw`bg-gray-200 py-[3px] px-[6px] mx-[4px] font-mono`}
     }
     table {
       border-collapse: collapse;
       border-spacing: 0;
-    }
-    * {
-      box-sizing: border-box;
     }
     hr {
       ${tw`pb-vgap-md`}
@@ -131,314 +122,6 @@ const styledClassNames = {
       ${tw`mb-vgap-md`}
       ${tw`pt-vgap-md pl-hgap-md border-l-1 border-gray-400`}
     }
-    tt,
-    code,
-    pre {
-      ${tw`font-mono`}
-    }
-    pre {
-      background-color: #f6f8fa;
-      border-radius: 3px;
-      font-size: 85%;
-      line-height: 1.45;
-      overflow: auto;
-      padding: 16px;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    .highlight {
-      margin-bottom: 16px;
-    }
-    .highlight pre {
-      padding: 16px;
-      margin-bottom: 0;
-      overflow: auto;
-      font-size: 85%;
-      line-height: 1.45;
-      background-color: #f7f7f7;
-      border-radius: 3px;
-    }
-    pre {
-      padding: 16px;
-      margin-bottom: 16px;
-      overflow: auto;
-      font-size: 85%;
-      line-height: 1.45;
-      background-color: #f7f7f7;
-      border-radius: 3px;
-      word-wrap: normal;
-      & + h2,
-      & + h3 {
-        ${tw`mt-vgap-lg`}
-      }
-    }
-    pre code,
-    pre tt {
-      display: inline;
-      max-width: initial;
-      padding: 0;
-      margin: 0;
-      overflow: initial;
-      line-height: inherit;
-      word-wrap: normal;
-      background-color: transparent;
-      border: 0;
-    }
-    pre code:before,
-    pre code:after {
-      content: normal;
-    }
-    pre tt:before,
-    pre tt:after {
-      content: normal;
-    }
-    .poetry pre {
-      font-family: Georgia, Garamond, serif !important;
-      font-style: italic;
-      font-size: 110% !important;
-      line-height: 1.6em;
-      display: block;
-      margin-left: 1em;
-    }
-    .poetry pre code {
-      font-family: Georgia, Garamond, serif !important;
-      word-break: break-all;
-      word-break: break-word;
-      -webkit-hyphens: auto;
-      -moz-hyphens: auto;
-      hyphens: auto;
-      white-space: pre-wrap;
-    }
-    sup,
-    sub,
-    a.footnote {
-      font-size: 1.4ex;
-      height: 0;
-      line-height: 1;
-      vertical-align: super;
-      position: relative;
-    }
-    sub {
-      vertical-align: sub;
-      top: -1px;
-    }
-    .highlight {
-      background: #fff;
-    }
-    .highlight .c {
-      color: #998;
-      font-style: italic;
-    }
-    .highlight .err {
-      color: #a61717;
-      background-color: #e3d2d2;
-    }
-    .highlight .k,
-    .highlight .o {
-      font-weight: 700;
-    }
-    .highlight .cm {
-      color: #998;
-      font-style: italic;
-    }
-    .highlight .cp {
-      color: #999;
-      font-weight: 700;
-    }
-    .highlight .c1 {
-      color: #998;
-      font-style: italic;
-    }
-    .highlight .cs {
-      color: #999;
-      font-weight: 700;
-      font-style: italic;
-    }
-    .highlight .gd {
-      color: #000;
-      background-color: #fdd;
-    }
-    .highlight .gd .x {
-      color: #000;
-      background-color: #faa;
-    }
-    .highlight .ge {
-      font-style: italic;
-    }
-    .highlight .gr {
-      color: #a00;
-    }
-    .highlight .gh {
-      color: #999;
-    }
-    .highlight .gi {
-      color: #000;
-      background-color: #dfd;
-    }
-    .highlight .gi .x {
-      color: #000;
-      background-color: #afa;
-    }
-    .highlight .go {
-      color: #888;
-    }
-    .highlight .gp {
-      color: #555;
-    }
-    .highlight .gs {
-      font-weight: 700;
-    }
-    .highlight .gu {
-      color: purple;
-      font-weight: 700;
-    }
-    .highlight .gt {
-      color: #a00;
-    }
-    .highlight .kc,
-    .highlight .kd,
-    .highlight .kn,
-    .highlight .kp,
-    .highlight .kr {
-      font-weight: 700;
-    }
-    .highlight .kt {
-      color: #458;
-      font-weight: 700;
-    }
-    .highlight .m {
-      color: #099;
-    }
-    .highlight .s {
-      color: #d14;
-    }
-    .highlight .n {
-      color: #333;
-    }
-    .highlight .na {
-      color: teal;
-    }
-    .highlight .nb {
-      color: #0086b3;
-    }
-    .highlight .nc {
-      color: #458;
-      font-weight: 700;
-    }
-    .highlight .no {
-      color: teal;
-    }
-    .highlight .ni {
-      color: purple;
-    }
-    .highlight .ne,
-    .highlight .nf {
-      color: #900;
-      font-weight: 700;
-    }
-    .highlight .nn {
-      color: #555;
-    }
-    .highlight .nt {
-      color: navy;
-    }
-    .highlight .nv {
-      color: teal;
-    }
-    .highlight .ow {
-      font-weight: 700;
-    }
-    .highlight .w {
-      color: #bbb;
-    }
-    .highlight .mf,
-    .highlight .mh,
-    .highlight .mi,
-    .highlight .mo {
-      color: #099;
-    }
-    .highlight .sb,
-    .highlight .sc,
-    .highlight .sd,
-    .highlight .s2,
-    .highlight .se,
-    .highlight .sh,
-    .highlight .si,
-    .highlight .sx {
-      color: #d14;
-    }
-    .highlight .sr {
-      color: #009926;
-    }
-    .highlight .s1 {
-      color: #d14;
-    }
-    .highlight .ss {
-      color: #990073;
-    }
-    .highlight .bp {
-      color: #999;
-    }
-    .highlight .vc,
-    .highlight .vg,
-    .highlight .vi {
-      color: teal;
-    }
-    .highlight .il {
-      color: #099;
-    }
-    .highlight .gc {
-      color: #999;
-      background-color: #eaf2f5;
-    }
-    .type-csharp .highlight .k,
-    .type-csharp .highlight .kt {
-      color: blue;
-    }
-    .type-csharp .highlight .nf {
-      color: #000;
-      font-weight: 400;
-    }
-    .type-csharp .highlight .nc {
-      color: #2b91af;
-    }
-    .type-csharp .highlight .nn {
-      color: #000;
-    }
-    .type-csharp .highlight .s,
-    .type-csharp .highlight .sc {
-      color: #a31515;
-    }
-    .type-csharp .highlight .k,
-    .type-csharp .highlight .kt {
-      color: #00f;
-    }
-    .type-csharp .highlight .nf {
-      color: #000;
-      font-weight: normal;
-    }
-    .type-csharp .highlight .nc {
-      color: #2b91af;
-    }
-    .type-csharp .highlight .nn {
-      color: #000;
-    }
-    .type-csharp .highlight .s,
-    .type-csharp .highlight .sc {
-      color: #a31515;
-    }
-    kbd {
-      background-color: #fafbfc;
-      border: 1px solid #d1d5da;
-      border-radius: 3px;
-      box-shadow: inset 0 -1px 0 #d1d5da;
-      color: #444d56;
-      display: inline-block;
-      font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-      line-height: 10px;
-      padding: 3px 5px;
-      vertical-align: middle;
-    }
 
     /* PrismJS 1.22.0
     https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript */
@@ -452,14 +135,11 @@ const styledClassNames = {
     pre[class*="language-"] {
       color: #ccc;
       background: none;
-      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-      font-size: 1em;
-      text-align: left;
+      ${tw`font-mono text-base px-0 mx-0`}
       white-space: pre;
       word-spacing: normal;
       word-break: normal;
       word-wrap: normal;
-      line-height: 1.5;
 
       -moz-tab-size: 4;
       -o-tab-size: 4;
@@ -730,8 +410,8 @@ const ArticlePageLayout = ({
         <div
           className={ctl(`
             md:grid 
-            md:grid-cols-[80px_1fr_180px]
-            lg:grid-cols-[100px_1fr_220px]
+            md:grid-cols-[80px_minmax(0,1fr)_180px]
+            lg:grid-cols-[100px_minmax(0,1fr)_220px]
             md:gap-x-hgap-sm
             md:gap-y-vgap-sm lg:gap-y-vgap-md
             w-auto max-w-[1280px]
