@@ -2,14 +2,14 @@ import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
 import TwitterIcon from "../assets/svgs/twitter.svg";
 import FacebookIcon from "../assets/svgs/facebook.svg";
-import { Header } from "../components/shared/header";
-import { Footer } from "../components/shared/footer";
+import { Header } from "./shared/header";
+import { Footer } from "./shared/footer";
 
 const Tag = ({ text }) => {
   return (
     <li className="pt-vgap-xs">
       <a
-        href="/"
+        href={`/tags/${text}`}
         className={ctl(`
           inline-block
           ml-hgap-xs
@@ -25,12 +25,12 @@ const Tag = ({ text }) => {
   );
 };
 
-const HeroImg = () => {
+const HeroImg = ({ src }) => {
   return (
     <div className="">
       <img
         className="border-b-[10px] border-t-[10px] border-black block max-w-[1280px] w-full mx-auto"
-        src="https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=1200&h=400"
+        src={src}
         alt=""
       />
     </div>
@@ -65,33 +65,40 @@ const ShareBarVertical = () => {
   );
 };
 
-const ArticleDate = () => {
-  return <p className="text-sm text-gray-500 font-futura">2022/01/10 (Web)</p>;
+const ArticleDate = ({ publishedDate }) => {
+  return (
+    <p className="text-sm text-gray-500 font-futura">
+      {publishedDate.year}/{publishedDate.month}/{publishedDate.dayOfMonth} (
+      {publishedDate.dayOfWeekEn})
+    </p>
+  );
 };
 
-const ArticleTagsHorizontal = () => {
+const ArticleTagsHorizontal = ({ tags }) => {
   return (
     <aside>
       <ul className="text-sm flex flex-wrap -ml-hgap-xs -mt-hgap-xs">
-        <Tag text="Music" />
-        <Tag text="Development" />
-        <Tag text="Work" />
-        <Tag text="CSS" />
+        {tags.map((tag) => {
+          return <Tag text={tag} key={tag} />;
+        })}
       </ul>
     </aside>
   );
 };
 
-const ArticleTagsVertical = () => {
+const ArticleTagsVertical = ({ tags }) => {
   return (
-    <aside>
-      <ul className="text-sm lg:text-base -ml-hgap-xs -mt-hgap-xs">
-        <Tag text="Music" />
-        <Tag text="Development" />
-        <Tag text="Work" />
-        <Tag text="CSS" />
-      </ul>
-    </aside>
+    <>
+      {tags.length && (
+        <aside>
+          <ul className="text-sm lg:text-base -ml-hgap-xs -mt-hgap-xs">
+            {tags.map((tag) => {
+              return <Tag text={tag} key={tag} />;
+            })}
+          </ul>
+        </aside>
+      )}
+    </>
   );
 };
 
@@ -121,9 +128,12 @@ const ShareBarRightTop = () => {
   );
 };
 
-const Article = () => {
+const ArticleBody = ({html}) => {
   return (
     <div>
+      <div style={{ background: 'orange' }}>DEBUG_BAR</div>
+      {html}
+      <div style={{ background: 'orange' }}>DEBUG_BAR</div>
       <div
         className={ctl(`
           border-b border-dashed border-gray-600
@@ -172,64 +182,21 @@ const Article = () => {
   );
 };
 
-const ArticleTitle = () => {
+const ArticleTitle = ({ title }) => {
   return (
     <header>
-      <h1 className="text-lg sm:text-xl md:text-2xl">彼は背後にひそかな足音</h1>
+      <h1 className="text-lg sm:text-xl md:text-2xl">{title}</h1>
     </header>
   );
 };
 
-const RelatedNav = () => {
-  return (
-    <div className="border-t border-gray-600">
-      <dl>
-        <dt>他の記事を読む</dt>
-        <div>
-          <dd>
-            <a href="/">
-              2022/01/10:
-              彼は背後にひそかな足音を聞いたそれはあまり良い意味を示すものではない
-            </a>
-          </dd>
-          <dd>
-            <a href="/">
-              2022/01/10:
-              ひそかな足音を聞いたそれはあまり良い意味を示すものではない
-            </a>
-          </dd>
-          <dd>
-            2022/01/10:
-            彼は背後にひそかな足音をそれはあまり良い意味を示すものではない
-          </dd>
-          <dd>
-            <a href="/">
-              2022/01/10: 聞いたそれはあまり良い意味を示すものではない
-            </a>
-          </dd>
-          <dd>
-            <a href="/">
-              2022/01/10:
-              にひそかな足音を聞いたそれはあまり良い意味を示すものではない
-            </a>
-          </dd>
-        </div>
-        <dd>
-          <a href="/">記事の一覧へ</a>
-        </dd>
-      </dl>
-    </div>
-  );
-};
-
-// markup
-const IndexPage = () => {
+const ArticlePageLayout = ({ title, publishedDate, heroImgUrl, tags, articleHtml }) => {
   return (
     <div className="text-base">
       <div>
-        <title>Home Page</title>
+        <title>{title}</title>
         <Header />
-        <HeroImg />
+        <HeroImg src={heroImgUrl} />
         <div
           className={ctl(`
             md:grid 
@@ -244,9 +211,9 @@ const IndexPage = () => {
         `)}
         >
           <div className="md:col-start-2">
-            <ArticleDate />
+            <ArticleDate publishedDate={publishedDate} />
             <div className="pt-vgap-xs">
-              <ArticleTitle />
+              <ArticleTitle title={title} />
             </div>
           </div>
 
@@ -266,7 +233,7 @@ const IndexPage = () => {
             md:pl-hgap-sm
           `)}
           >
-            <ArticleTagsVertical />
+            <ArticleTagsVertical tags={tags} />
           </div>
 
           <div
@@ -275,21 +242,18 @@ const IndexPage = () => {
           `)}
           >
             <div className="pt-vgap-sm md:hidden">
-              <ArticleTagsHorizontal />
+              <ArticleTagsHorizontal tags={tags} />
             </div>
             <div className="pt-vgap-sm md:hidden pb-vgap-sm md:pb-[0px]">
               <ShareBarRightTop />
             </div>
-            <Article />
+            <ArticleBody html={articleHtml} />
           </div>
         </div>
-        {/*
-        <RelatedNav />
-        */}
       </div>
       <Footer />
     </div>
   );
 };
 
-export default IndexPage;
+export { ArticlePageLayout };
