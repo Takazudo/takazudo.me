@@ -66,18 +66,22 @@ const ShareBarVertical = () => {
       <dl className="flex flex-col text-center mr-auto">
         <dt className="pb-hgap-sm nowrap text-sm font-futura">Share</dt>
         <dd className="pb-hgap-sm">
-          <TwitterIcon className={ctl(`
+          <TwitterIcon
+            className={ctl(`
             w-[30px] h-[30px]
             lg:w-[40px] lg:h-[40px]
             block mx-auto
-          `)} />
+          `)}
+          />
         </dd>
         <dd className="pb-hgap-sm">
-          <FacebookIcon className={ctl(`
+          <FacebookIcon
+            className={ctl(`
             w-[30px] h-[30px]
             lg:w-[40px] lg:h-[40px]
             block mx-auto
-          `)} />
+          `)}
+          />
         </dd>
       </dl>
     </div>
@@ -117,7 +121,6 @@ const ArticleTagsVertical = () => {
 const ShareBarRightTop = () => {
   return (
     <div className="absolute right-0 top-0">
-    
       <dl className="flex">
         <dt
           className={ctl(`
@@ -137,15 +140,21 @@ const ShareBarRightTop = () => {
           <FacebookIcon className="w-[22px] h-[22px] block" />
         </dd>
       </dl>
-      </div>
-    
+    </div>
   );
 };
 
 const Article = () => {
   return (
     <div>
-      <div className="border-b border-dashed border-gray-600 pb-vgap-sm mb-vgap-lg ml-[-100px] pl-[100px]">
+      <div
+        className={ctl(`
+          border-b border-dashed border-gray-600
+          md:ml-[-100px] md:pl-[100px]
+          lg:ml-[-120px] lg:pl-[120px]
+          pb-vgap-sm mb-vgap-lg 
+        `)}
+      >
         <p className="pb-vgap-md">
           彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
           彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
@@ -169,7 +178,14 @@ const Article = () => {
           彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
         </p>
       </div>
-      <div className="border-t border-dashed border-gray-600 pt-vgap-lg ml-[-100px] pl-[100px]">
+      <div
+        className={ctl(`
+          border-t border-dashed border-gray-600
+          md:ml-[-100px] md:pl-[100px]
+          lg:ml-[-120px] lg:pl-[120px]
+          pt-vgap-lg
+        `)}
+      >
         <p className="pb-vgap-md">
           彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
           彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
@@ -290,7 +306,9 @@ const IndexPage = () => {
             <Article />
           </div>
         </div>
+        {/*
         <RelatedNav />
+        */}
       </div>
       <footer className="bg-black text-white px-hgap-lg py-vgap-lg mt-vgap-lg flex font-futura">
         <div className="self-center grow">takazudo.me</div>
