@@ -5,7 +5,7 @@ const Outro = ({ children }) => {
   return (
     <div
       className={ctl(`
-        border-t border-dashed border-gray-600
+        border-t-5 border-dashed border-gray-400
         md:ml-[-100px] md:pl-[100px]
         lg:ml-[-120px] lg:pl-[120px]
         pt-vgap-lg

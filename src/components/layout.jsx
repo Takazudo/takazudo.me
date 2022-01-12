@@ -1,17 +1,13 @@
 import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { ArticlePageLayout } from "./article-page-layout";
-import { Img } from "../components/img";
-import { Note } from "../components/note";
-import { ColumnBlock } from "../components/column-block";
-//import { RichText } from "../components/rich-text"
-import { ClosingArea } from "../components/closing-area";
-import { UrlReference } from "../components/url-reference";
-import { PreWrapCodeWrapper } from "../components/pre-wrap-code-wrapper";
+import Helmet from 'react-helmet'
 
 import { Intro } from "./article/intro";
 import { Body } from "./article/body";
 import { Outro } from "./article/outro";
+import { UrlReference } from "./article/url-reference";
+import { Youtube } from "./article/youtube";
 
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -57,22 +53,42 @@ const parseTags = ({ tagsString }) => {
   return tags;
 };
 
-const stripPathSlashes = (str) => {
-  // "/slug/" -> slug
-  return str.replace(/^\//, "").replace(/\/$/, "");
+const H2 = ({ id, children }) => {
+  return (
+    <h2 id={id}>
+      <span>
+        <span>
+          <a href={`#${id}`} aria-hidden="true">
+            #
+          </a>
+          {children}
+        </span>
+      </span>
+    </h2>
+  );
+};
+
+const H3 = ({ id, children }) => {
+  return (
+    <h3 id={id}>
+      <span>
+        <a href={`#${id}`} aria-hidden="true">
+          #
+        </a>
+        {children}
+      </span>
+    </h3>
+  );
 };
 
 const components = {
+  h2: H2,
+  h3: H3,
   Intro,
   Body,
   Outro,
-
-  Img,
-  ColumnBlock,
-  ClosingArea,
-  Note,
   UrlReference,
-  PreWrapCodeWrapper,
+  Youtube,
 };
 
 const Layout = (props) => {
@@ -86,6 +102,9 @@ const Layout = (props) => {
 
   return (
     <MDXProvider components={components}>
+      <Helmet>
+        <title>{title} | takazudo.me</title>
+      </Helmet>
       <ArticlePageLayout
         title={title}
         publishedDate={parsePublishedDate({

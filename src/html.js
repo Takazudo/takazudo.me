@@ -15,6 +15,7 @@ export default function HTML(props) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap" rel="stylesheet" />
+        <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}

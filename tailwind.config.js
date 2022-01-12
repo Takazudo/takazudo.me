@@ -57,11 +57,11 @@ module.exports = {
     },
     fontSize: {
       xs: ["0.875rem", { lineHeight: "1rem" }],
-      sm: ["1rem", { lineHeight: "1.5" }], // 16px
-      base: ["1.125rem", { lineHeight: "1.7" }], // 18px
-      lg: ["1.5rem", { lineHeight: "1.5" }], //20px
-      xl: ["2rem", { lineHeight: "1.6" }], // 28px
-      "2xl": ["2.7rem", { lineHeight: "1.4" }], // 43px
+      sm: ["1rem", { lineHeight: "1.5" }],
+      base: ["1.125rem", { lineHeight: "1.7" }],
+      lg: ["1.5rem", { lineHeight: "1.5" }],
+      xl: ["1.8rem", { lineHeight: "1.6" }],
+      "2xl": ["2.7rem", { lineHeight: "1.4" }],
     },
     lineHeight: {
       none: "1",
