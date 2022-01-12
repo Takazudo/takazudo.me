@@ -61,7 +61,10 @@ module.exports = {
           default: require.resolve("./src/components/layout.jsx"),
         },
         //gatsbyRemarkPlugins: ["gatsby-remark-table-of-contents"],
-        remarkPlugins: [require("remark-external-links")],
+        remarkPlugins: [
+          require("remark-external-links"),
+          require("remark-breaks"),
+        ],
         rehypePlugins: [
           require("rehype-slug"),
           [require("@mapbox/rehype-prism"), { ignoreMissing: true }],
