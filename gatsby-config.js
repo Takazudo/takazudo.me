@@ -1,9 +1,11 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://takazudo.me",
     title: "takazudo.me",
+    titleTemplate: "%s | takazudo.me",
+    siteUrl: "https://takazudo.me",
     description: `booom I'm Takazudo.`,
     author: `Takazudo`,
+    imgUrl: `https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=1200&h=400`,
   },
   plugins: [
     {

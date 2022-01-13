@@ -1,5 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
+
+const facebookSdkOptions = {
+  appId: "MY-APP-ID",
+  autoLogAppEvents: true,
+  xfbml: true,
+  version: "v12.0",
+};
 
 export default function HTML(props) {
   return (
@@ -13,12 +20,33 @@ export default function HTML(props) {
         />
         {props.headComponents}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap" rel="stylesheet" />
-        <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
+        <script
+          key="facebook-async-init"
+          dangerouslySetInnerHTML={{
+            __html: `window.fbAsyncInit = function() {FB.init(${JSON.stringify(
+              facebookSdkOptions
+            )})}`,
+          }}
+        />
+        <script
+          key="facebook-sdk"
+          async={true}
+          defer={true}
+          crossOrigin="anonymous"
+          src="https://connect.facebook.net/en_US/sdk.js"
+        ></script>
         <div
           key={`body`}
           id="___gatsby"
@@ -27,7 +55,7 @@ export default function HTML(props) {
         {props.postBodyComponents}
       </body>
     </html>
-  )
+  );
 }
 
 HTML.propTypes = {
@@ -37,4 +65,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
-}
+};

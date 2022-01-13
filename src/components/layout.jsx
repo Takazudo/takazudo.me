@@ -1,8 +1,7 @@
 import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { ArticlePageLayout } from "./article-page-layout";
-import Helmet from "react-helmet";
-
+import { HeadMeta } from "./shared/head-meta";
 import { Intro } from "./article/intro";
 import { Body } from "./article/body";
 import { Outro } from "./article/outro";
@@ -81,14 +80,18 @@ const components = {
 
 const Layout = (props) => {
   const { pageContext, children } = props;
-  const { title, heroImgUrl, tags } = pageContext.frontmatter;
+  const { title, description, heroImgUrl, tags } = pageContext.frontmatter;
   //console.dir(props, { depth: null });
 
   return (
     <MDXProvider components={components}>
-      <Helmet>
-        <title>{title} | takazudo.me</title>
-      </Helmet>
+      <HeadMeta
+        pageTitle={title}
+        pageDescription={description}
+        pageImgUrl={heroImgUrl || null}
+        isArticle={true}
+        path={props.location.pathname}
+      />
       <ArticlePageLayout
         title={title}
         publishedDate={parsePublishedDate({

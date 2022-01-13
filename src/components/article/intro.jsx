@@ -5,7 +5,7 @@ const Intro = ({ children }) => {
   return (
     <div
       className={ctl(`
-        border-b-5 border-dashed border-gray-400
+        border-b-1 border-dashed border-black
         pb-vgap-sm mb-vgap-lg 
       `)}
     >
