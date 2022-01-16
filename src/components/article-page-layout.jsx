@@ -4,6 +4,7 @@ import TwitterIcon from "../assets/svgs/twitter.svg";
 import FacebookIcon from "../assets/svgs/facebook.svg";
 import { Header } from "./shared/header";
 import { Footer } from "./shared/footer";
+import { TwitterShareButton } from "./shared/twitter-share-button";
 
 import tw from "twin.macro";
 import { css } from "@emotion/css";
@@ -244,19 +245,6 @@ const styledClassNames = {
       color: green;
     }
   `,
-};
-
-const TwitterShareButton = ({ children, pageUrl }) => {
-  return (
-    <a
-      className="block"
-      href={`https://twitter.com/intent/tweet?text=${window.document.title}&url=${pageUrl}`}
-      target="_blank"
-      rel="noreferrer"
-    >
-      {children}
-    </a>
-  );
 };
 
 const FacebookShareButton = ({ children, pageUrl }) => {
