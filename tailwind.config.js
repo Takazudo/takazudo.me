@@ -1,5 +1,5 @@
 const lengthCollection = {
-  "0": 0,
+  0: 0,
   "1px": 1,
 
   "hgap-2xs": 5,
@@ -46,7 +46,7 @@ module.exports = {
       10: "10px",
     },
     fontFamily: {
-      futura: ["Futura", "Hind", 'sans-serif'],
+      futura: ["Futura", "Hind", "sans-serif"],
       mono: [
         "Menlo",
         "Monaco",
@@ -58,11 +58,11 @@ module.exports = {
     },
     fontSize: {
       xs: ["0.875rem", { lineHeight: "1rem" }],
-      sm: ["1rem", { lineHeight: "1.5" }],
+      sm: ["0.95rem", { lineHeight: "1.5" }],
       base: ["1.1rem", { lineHeight: "1.7" }],
-      lg: ["1.5rem", { lineHeight: "1.5" }],
-      xl: ["1.8rem", { lineHeight: "1.6" }],
-      "2xl": ["2.7rem", { lineHeight: "1.4" }],
+      lg: ["1.3rem", { lineHeight: "1.5" }],
+      xl: ["1.8rem", { lineHeight: "1.4" }],
+      "2xl": ["2.4rem", { lineHeight: "1.4" }],
     },
     lineHeight: {
       none: "1",
@@ -75,5 +75,5 @@ module.exports = {
     extend: {},
   },
 
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

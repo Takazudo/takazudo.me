@@ -1,295 +1,125 @@
 import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
-import TwitterIcon from "../assets/svgs/twitter.svg";
-import FacebookIcon from "../assets/svgs/facebook.svg";
 import { Header } from "../components/global/header";
 import { Footer } from "../components/global/footer";
 
-const Tag = ({ text }) => {
-  return (
-    <li className="pt-vgap-xs">
-      <a
-        href="/"
-        className={ctl(`
-          inline-block
-          ml-hgap-xs
-          font-futura
-          rounded-sm rounded-l-none
-          no-underline
-          border-b border-black
-        `)}
-      >
-        #<span className="mx-[2px]">{text}</span>
-      </a>
-    </li>
-  );
-};
-
-const HeroImg = () => {
-  return (
-    <div className="">
-      <img
-        className="border-b-[10px] border-t-[10px] border-black block max-w-[1280px] w-full mx-auto"
-        src="https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=1200&h=400"
-        alt=""
-      />
-    </div>
-  );
-};
-
-const ShareBarVertical = () => {
-  return (
-    <div>
-      <dl className="flex flex-col text-center mr-auto">
-        <dt className="pb-hgap-sm nowrap text-sm font-futura">Share</dt>
-        <dd className="pb-hgap-sm">
-          <TwitterIcon
-            className={ctl(`
-            w-[30px] h-[30px]
-            lg:w-[40px] lg:h-[40px]
-            block mx-auto
-          `)}
-          />
-        </dd>
-        <dd className="pb-hgap-sm">
-          <FacebookIcon
-            className={ctl(`
-            w-[30px] h-[30px]
-            lg:w-[40px] lg:h-[40px]
-            block mx-auto
-          `)}
-          />
-        </dd>
-      </dl>
-    </div>
-  );
-};
-
-const ArticleDate = () => {
-  return <p className="text-sm text-gray-500 font-futura">2022/01/10 (Web)</p>;
-};
-
-const ArticleTagsHorizontal = () => {
-  return (
-    <aside>
-      <ul className="text-sm flex flex-wrap -ml-hgap-xs -mt-hgap-xs">
-        <Tag text="Music" />
-        <Tag text="Development" />
-        <Tag text="Work" />
-        <Tag text="CSS" />
-      </ul>
-    </aside>
-  );
-};
-
-const ArticleTagsVertical = () => {
-  return (
-    <aside>
-      <ul className="text-sm lg:text-base -ml-hgap-xs -mt-hgap-xs">
-        <Tag text="Music" />
-        <Tag text="Development" />
-        <Tag text="Work" />
-        <Tag text="CSS" />
-      </ul>
-    </aside>
-  );
-};
-
-const ShareBarRightTop = () => {
-  return (
-    <div className="absolute right-0 top-0">
-      <dl className="flex">
-        <dt
-          className={ctl(`
-            nowrap
-            text-sm font-futura
-            self-center
-            pr-hgap-xs
-            hidden sm:block
-        `)}
-        >
-          Share
-        </dt>
-        <dd className="pr-hgap-2xs">
-          <TwitterIcon className="w-[24px] h-[24px] block" />
-        </dd>
-        <dd>
-          <FacebookIcon className="w-[22px] h-[22px] block" />
-        </dd>
-      </dl>
-    </div>
-  );
-};
-
 const Article = () => {
+  const src =
+    "https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=800&h=800";
   return (
-    <div>
+    <a
+      href="/articles/2022-01-12-hogehoge"
+      className={ctl(`
+        block
+        no-underline hover:underline focus:underline
+        border-t border-black
+        pt-vgap-md border-dashed
+        sm:pt-0 sm:border-t-0
+      `)}
+    >
       <div
         className={ctl(`
-          border-b border-dashed border-gray-600
-          md:ml-[-100px] md:pl-[100px]
-          lg:ml-[-120px] lg:pl-[120px]
-          pb-vgap-sm mb-vgap-lg 
-        `)}
+          grid
+          grid-cols-3
+          grid-rows-[auto_auto_1fr]
+          gap-x-hgap-sm
+      `)}
       >
-        <p className="pb-vgap-md">
-          <a href="/articles/2022-01-12-hogehoge">test page</a>
-          彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
-          彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
+        <div className="row-span-2 sm:row-span-3">
+          <img
+            className={ctl(`
+              block w-full
+              border-y-5 border-black
+              md:border-y-10
+            `)}
+            src={src}
+            alt=""
+          />
+        </div>
+        <p
+          className={ctl(`
+            font-futura no-underline text-gray-500 
+            text-xs sm:text-sm
+            col-span-2   
+          `)}
+        >
+          2022/01/10 (Wed)
         </p>
-        <p className="pb-vgap-md">
-          彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
-          彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
+        <h2 className="col-span-2 text-lg underline pt-vgap-xs line-clamp-3 font-bold">
+          彼は背後にひそかな 彼は背後にひそかな 彼は背後にひそかな
+        </h2>
+        <p
+          className={ctl(`
+            col-span-3 sm:col-span-2
+            text-sm sm:text-base
+            no-underline line-clamp-3
+            pt-vgap-sm 
+          `)}
+        >
+          彼は背後にひ彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
+          彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。彼は足音が止まったことに気が着いた。あわてて辺りを見回す。ふと狭い抜け道に目が止まる。
+          彼は素早く右に身を翻し、建物の間に消え去った。その時彼は、もう少しで道の真中に転がっていたごみバケツに躓き転ぶところだった。
+          彼は暗闇の中で道を確かめようとじっと見つめた。どうやら自分の通ってきた道以外にこの中庭からの出道はないようだ。
+          足音はだんだん近づき、彼には角を曲がる黒い人影が見えた。彼の目は夜の闇の中を必死にさまよい、逃げ道を探す。もうすべては終わりなのか。すべての苦労と準備は水の泡だというのか。
+          突然、彼の横で扉が風に揺らぎ、ほんのわずかにきしむのを聞いた時、彼は背中を壁に押し付け、追跡者に見付けられないことを願った。この扉は望みの綱として投げかけられた、彼のジレンマからの出口なのだろうか。背中を壁にぴったり押し付けたまま、ゆっくりと彼は開いている扉の方へと身を動かして行った。この扉は彼の救いとなるのだろうか。
         </p>
       </div>
-      <div className="pb-vgap-sm">
-        <p className="pb-vgap-md">
-          彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
-          彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
-        </p>
-        <p className="pb-vgap-md">
-          彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
-          彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
-        </p>
-        <p className="pb-vgap-md">
-          彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
-          彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
-        </p>
-      </div>
-      <div
-        className={ctl(`
-          border-t border-dashed border-gray-600
-          md:ml-[-100px] md:pl-[100px]
-          lg:ml-[-120px] lg:pl-[120px]
-          pt-vgap-lg
-        `)}
-      >
-        <p className="pb-vgap-md">
-          彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。
-          彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。
-        </p>
-      </div>
-    </div>
+    </a>
   );
 };
 
-const ArticleTitle = () => {
-  return (
-    <header>
-      <h1 className="text-lg sm:text-xl md:text-2xl">彼は背後にひそかな足音</h1>
-    </header>
-  );
-};
-
-//const RelatedNav = () => {
-//  return (
-//    <div className="border-t border-gray-600">
-//      <dl>
-//        <dt>他の記事を読む</dt>
-//        <div>
-//          <dd>
-//            <a href="/">
-//              2022/01/10:
-//              彼は背後にひそかな足音を聞いたそれはあまり良い意味を示すものではない
-//            </a>
-//          </dd>
-//          <dd>
-//            <a href="/">
-//              2022/01/10:
-//              ひそかな足音を聞いたそれはあまり良い意味を示すものではない
-//            </a>
-//          </dd>
-//          <dd>
-//            2022/01/10:
-//            彼は背後にひそかな足音をそれはあまり良い意味を示すものではない
-//          </dd>
-//          <dd>
-//            <a href="/">
-//              2022/01/10: 聞いたそれはあまり良い意味を示すものではない
-//            </a>
-//          </dd>
-//          <dd>
-//            <a href="/">
-//              2022/01/10:
-//              にひそかな足音を聞いたそれはあまり良い意味を示すものではない
-//            </a>
-//          </dd>
-//        </div>
-//        <dd>
-//          <a href="/">記事の一覧へ</a>
-//        </dd>
-//      </dl>
-//    </div>
-//  );
-//};
-
-// markup
 const IndexPage = () => {
   return (
-    <div className="text-base">
+    <>
       <div>
-        <title>Home Page</title>
         <Header />
-        <HeroImg />
+        <p
+          className={ctl(`
+            border-black 
+            border-t-5 md:border-t-[10px]
+            max-w-[1280px] mx-auto px-hgap-sm
+            pt-vgap-md sm:pt-vgap-lg
+            sm:pb-vgap-md
+            font-futura text-lg sm:text-xl lg:text-2xl
+            text-center
+          `)}
+        >
+          Notes by{" "}
+          <a href="https://twitter.com/Takazudo" rel="noreferrer">
+            @Takazudo.
+          </a>
+        </p>
         <div
           className={ctl(`
-            md:grid 
-            md:grid-cols-[80px_1fr_180px]
-            lg:grid-cols-[100px_1fr_220px]
-            md:gap-x-hgap-sm
-            md:gap-y-vgap-sm lg:gap-y-vgap-md
-            w-auto max-w-[1280px]
-            mt-hgap-sm sm:mt-hgap-md
-            mx-hgap-sm md:mx-auto
-            relative
-        `)}
+            max-w-[1280px] mx-auto px-hgap-sm pt-vgap-md
+          `)}
         >
-          <div className="md:col-start-2">
-            <ArticleDate />
-            <div className="pt-vgap-xs">
-              <ArticleTitle />
-            </div>
-          </div>
-
           <div
             className={ctl(`
-            hidden md:block
-            md:col-start-1 md:row-start-2
-          `)}
+              grid 
+              grid-cols-[1fr]
+              md:grid-cols-[1fr_1fr]
+              gap-x-hgap-md
+              gap-y-vgap-md
+              sm:gap-y-vgap-lg
+            `)}
           >
-            <ShareBarVertical />
-          </div>
-
-          <div
-            className={ctl(`
-            hidden md:block
-            md:col-start-3 md:row-start-2
-            md:pl-hgap-sm
-          `)}
-          >
-            <ArticleTagsVertical />
-          </div>
-
-          <div
-            className={ctl(`
-            md:col-start-2 md:row-start-2
-          `)}
-          >
-            <div className="pt-vgap-sm md:hidden">
-              <ArticleTagsHorizontal />
-            </div>
-            <div className="pt-vgap-sm md:hidden pb-vgap-sm md:pb-[0px]">
-              <ShareBarRightTop />
-            </div>
+            <Article />
+            <Article />
+            <Article />
+            <Article />
+            <Article />
+            <Article />
+            <Article />
+            <Article />
+            <Article />
+            <Article />
             <Article />
           </div>
         </div>
-        {/*
-        <RelatedNav />
-        */}
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -407,7 +407,7 @@ const ArticleBody = ({ html }) => {
 const ArticleTitle = ({ title }) => {
   return (
     <header>
-      <h1 className="text-lg sm:text-xl md:text-2xl">{title}</h1>
+      <h1 className="font-bold text-xl sm:text-xl md:text-2xl">{title}</h1>
     </header>
   );
 };
