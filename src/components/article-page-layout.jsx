@@ -105,7 +105,7 @@ const styledClassNames = {
       }
     }
     h4 {
-      ${tw`text-red-500`}
+      ${tw`font-bold`}
     }
     p {
       ${tw`pb-vgap-md`}
@@ -243,18 +243,34 @@ const styledClassNames = {
     .token.inserted {
       color: green;
     }
-`,
+  `,
 };
 
-const TwitterAnchor = ({ children }) => {
+const TwitterShareButton = ({ children, pageUrl }) => {
   return (
     <a
-      href={`https://twitter.com/intent/tweet?text=${window.document.title}&url=${window.location.href}`}
+      className="block"
+      href={`https://twitter.com/intent/tweet?text=${window.document.title}&url=${pageUrl}`}
       target="_blank"
       rel="noreferrer"
     >
       {children}
     </a>
+  );
+};
+
+const FacebookShareButton = ({ children, pageUrl }) => {
+  const facebookShare = () => {
+    window.FB.ui({
+      display: "popup",
+      method: "share",
+      href: pageUrl,
+    });
+  };
+  return (
+    <button className="facebook-share-button" onClick={facebookShare}>
+      {children}
+    </button>
   );
 };
 
@@ -290,13 +306,13 @@ const HeroImg = ({ src }) => {
   );
 };
 
-const ShareBarVertical = () => {
+const ShareBarVertical = ({ pageUrl }) => {
   return (
     <div>
       <dl className="flex flex-col text-center mr-auto">
         <dt className="pb-hgap-sm nowrap text-sm font-futura">Share</dt>
-        <dd className="pb-hgap-sm">
-          <TwitterAnchor>
+        <dd className="pb-hgap-sm flex items-center flex-col">
+          <TwitterShareButton pageUrl={pageUrl}>
             <TwitterIcon
               className={ctl(`
                 w-[30px] h-[30px]
@@ -304,16 +320,18 @@ const ShareBarVertical = () => {
                 block mx-auto
               `)}
             />
-          </TwitterAnchor>
+          </TwitterShareButton>
         </dd>
-        <dd className="pb-hgap-sm">
-          <FacebookIcon
-            className={ctl(`
-            w-[30px] h-[30px]
-            lg:w-[40px] lg:h-[40px]
-            block mx-auto
-          `)}
-          />
+        <dd className="pb-hgap-sm flex items-center flex-col">
+          <FacebookShareButton pageUrl={pageUrl}>
+            <FacebookIcon
+              className={ctl(`
+                w-[30px] h-[30px]
+                lg:w-[40px] lg:h-[40px]
+                block mx-auto
+              `)}
+            />
+          </FacebookShareButton>
         </dd>
       </dl>
     </div>
@@ -357,7 +375,7 @@ const ArticleTagsVertical = ({ tags }) => {
   );
 };
 
-const ShareBarRightTop = () => {
+const ShareBarRightTop = ({ pageUrl }) => {
   return (
     <div className="absolute right-0 top-0">
       <dl className="flex">
@@ -373,10 +391,14 @@ const ShareBarRightTop = () => {
           Share
         </dt>
         <dd className="pr-hgap-2xs">
-          <TwitterIcon className="w-[24px] h-[24px] block" />
+          <TwitterShareButton pageUrl={pageUrl}>
+            <TwitterIcon className="w-[24px] h-[24px] block" />
+          </TwitterShareButton>
         </dd>
         <dd>
-          <FacebookIcon className="w-[22px] h-[22px] block" />
+          <FacebookShareButton pageUrl={pageUrl}>
+            <FacebookIcon className="w-[22px] h-[22px] block" />
+          </FacebookShareButton>
         </dd>
       </dl>
     </div>
@@ -401,6 +423,7 @@ const ArticlePageLayout = ({
   heroImgUrl,
   tags,
   articleHtml,
+  pageUrl,
 }) => {
   return (
     <div className="text-base">
@@ -433,7 +456,7 @@ const ArticlePageLayout = ({
             md:col-start-1 md:row-start-2
           `)}
           >
-            <ShareBarVertical />
+            <ShareBarVertical pageUrl={pageUrl} />
           </div>
 
           <div
@@ -455,7 +478,7 @@ const ArticlePageLayout = ({
               <ArticleTagsHorizontal tags={tags} />
             </div>
             <div className="pt-vgap-sm md:hidden pb-vgap-sm md:pb-[0px]">
-              <ShareBarRightTop />
+              <ShareBarRightTop pageUrl={pageUrl} />
             </div>
             <ArticleBody html={articleHtml} />
           </div>

@@ -7,6 +7,7 @@ import { Body } from "./article/body";
 import { Outro } from "./article/outro";
 import { UrlReference } from "./article/url-reference";
 import { Youtube } from "./article/youtube";
+import { useSiteMetadata } from "../hooks/use-site-metadata";
 
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -81,6 +82,7 @@ const components = {
 const Layout = (props) => {
   const { pageContext, children } = props;
   const { title, description, heroImgUrl, tags } = pageContext.frontmatter;
+  const { siteUrl } = useSiteMetadata();
   //console.dir(props, { depth: null });
 
   return (
@@ -100,6 +102,7 @@ const Layout = (props) => {
         heroImgUrl={heroImgUrl}
         tags={tags}
         articleHtml={children}
+        pageUrl={`${siteUrl}${props.location.pathname}`}
       />
     </MDXProvider>
   );
