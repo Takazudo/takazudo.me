@@ -14,6 +14,7 @@ const lengthCollection = {
   "vgap-sm": 15,
   "vgap-md": 30,
   "vgap-lg": 45,
+  "vgap-xl": 60,
 };
 
 const lengthCollectionPx = {};
