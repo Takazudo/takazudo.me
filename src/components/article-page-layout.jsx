@@ -400,7 +400,7 @@ const ArticlePageLayout = ({
   pageUrl,
 }) => {
   return (
-    <div className="text-base">
+    <>
       <div>
         <Header />
         <HeroImg src={heroImgUrl} />
@@ -459,7 +459,7 @@ const ArticlePageLayout = ({
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

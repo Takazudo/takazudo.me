@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
+  html {
+    @apply text-base;
+  }
   a {
     @apply underline;
   }

@@ -59,7 +59,7 @@ module.exports = {
     fontSize: {
       xs: ["0.875rem", { lineHeight: "1rem" }],
       sm: ["1rem", { lineHeight: "1.5" }],
-      base: ["1.125rem", { lineHeight: "1.7" }],
+      base: ["1.1rem", { lineHeight: "1.7" }],
       lg: ["1.5rem", { lineHeight: "1.5" }],
       xl: ["1.8rem", { lineHeight: "1.6" }],
       "2xl": ["2.7rem", { lineHeight: "1.4" }],

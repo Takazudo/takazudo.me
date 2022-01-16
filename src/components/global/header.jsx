@@ -18,7 +18,7 @@ const Header = () => {
           className={ctl(`
             grow font-bold
             py-[1rem] md:py-[2rem] 
-            text-lg md:text-2xl
+            text-lg md:text-xl lg:text-2xl
           `)}
         >
           <a href="/">takazudo.me</a>
