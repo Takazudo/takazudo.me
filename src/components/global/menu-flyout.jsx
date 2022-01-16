@@ -160,7 +160,7 @@ const MenuFlyout = ({ className, items = [] }) => {
                           block relative z-50
                           text-black px-hgap-xs rounded-md
                           text-center
-                          sm:text-xl
+                          text-2xl
                           ${active && "outline outline-2 outline-blue-700"}
                         `)}
                       >

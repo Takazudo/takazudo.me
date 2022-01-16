@@ -1,4 +1,5 @@
 import * as React from "react";
+import ctl from "@netlify/classnames-template-literals";
 import { MenuFlyout } from "./menu-flyout";
 
 const Header = () => {
@@ -8,16 +9,25 @@ const Header = () => {
     { href: "/articles", text: "Articles" },
   ];
   return (
-    <div className="px-hgap-md">
-      <header className="flex font-futura mx-auto max-w-[1280px]">
-        <div className="py-hgap-md self-center grow font-bold text-2xl">
+    <div className="px-hgap-sm">
+      {/* 
+        1280px - 120px*2
+      */}
+      <header className="flex items-center font-futura mx-auto max-w-[1040px]">
+        <div
+          className={ctl(`
+            grow font-bold
+            py-[1rem] md:py-[2rem] 
+            text-lg md:text-2xl
+          `)}
+        >
           <a href="/">takazudo.me</a>
         </div>
         <div className="md:hidden">
           <MenuFlyout items={data} />
         </div>
-        <nav className="self-center grow-0 text-lg">
-          <ul className="flex self-center space-x-hgap-sm">
+        <nav className="grow-0 text-lg hidden md:block">
+          <ul className="flex space-x-hgap-sm">
             <li>
               <a href="/">Home</a>
             </li>
