@@ -5,7 +5,7 @@ const Footer = () => {
   const navData = [
     { href: "/", text: "Home" },
     { href: "/about", text: "About" },
-    { href: "/articles", text: "Articles" },
+    { href: "/notes", text: "Notes" },
   ];
   return (
     <footer

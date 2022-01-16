@@ -45,7 +45,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `articles`,
+        name: `notes`,
         path: `${__dirname}/src/mdx`,
         //ignore: [`**/*.js`], // ignore files starting with a dot
       },

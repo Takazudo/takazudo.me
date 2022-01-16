@@ -8,14 +8,13 @@ const Article = () => {
     "https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=1200&h=800";
   return (
     <a
-      href="/articles/2022-01-12-hogehoge"
+      href="/notes/2022-01-12-hogehoge"
       className={ctl(`
         block
         no-underline hover:underline focus:underline
         border-t border-black
         pt-vgap-md border-dashed
-        pb-vgap-md sm:pb-0
-        sm:pt-0 sm:border-t-0
+        pb-vgap-md 
       `)}
     >
       <div
@@ -91,11 +90,7 @@ const ArticleListPage = () => {
             max-w-[1280px] mx-auto px-hgap-sm pt-vgap-md
           `)}
         >
-          <div
-            className={ctl(`
-            space-y-vgap-md
-            `)}
-          >
+          <div>
             <Article />
             <Article />
             <Article />

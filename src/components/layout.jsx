@@ -16,12 +16,12 @@ dayjs.extend(customParseFormat);
 
 /**
  * convert
- * "/articles/2022-01-12-hogehoge"
+ * "/notes/2022-01-12-hogehoge"
  * into
  * "2022 01 12 Wed"
  */
 const parsePublishedDate = ({ pathname }) => {
-  const matchResult = pathname.match(/^\/articles\/(\d+)-(\d+)-(\d+)-.+/);
+  const matchResult = pathname.match(/^\/notes\/(\d+)-(\d+)-(\d+)-.+/);
   const year = matchResult[1];
   const month = matchResult[2];
   const dayOfMonth = matchResult[3];
