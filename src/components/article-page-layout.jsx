@@ -122,7 +122,9 @@ const styledClassNames = {
     }
     blockquote {
       ${tw`mb-vgap-md`}
-      ${tw`pt-vgap-md pl-hgap-md border-l-1 border-gray-400`}
+      ${tw`pt-vgap-sm pl-hgap-sm`}
+      ${tw`sm:pt-vgap-md sm:pl-hgap-md`}
+      ${tw`border-l-1 border-gray-400`}
     }
 
     /* PrismJS 1.22.0
@@ -137,7 +139,8 @@ const styledClassNames = {
     pre[class*="language-"] {
       color: #ccc;
       background: none;
-      ${tw`font-mono text-base px-0 mx-0`}
+      ${tw`font-mono px-0 mx-0`}
+      ${tw`text-xs lg:text-sm leading-snug`}
       white-space: pre;
       word-spacing: normal;
       word-break: normal;
@@ -155,8 +158,7 @@ const styledClassNames = {
 
     /* Code blocks */
     pre[class*="language-"] {
-      ${tw`mb-vgap-md`}
-      padding: 1em;
+      ${tw`mb-vgap-md px-hgap-sm py-vgap-sm`}
       overflow: auto;
     }
 
@@ -269,13 +271,32 @@ const Tag = ({ text }) => {
 };
 
 const HeroImg = ({ src }) => {
+  const srcWoQuery = src.replace(/\?.*/, "");
+  const srcNarrow = new URL(srcWoQuery);
+  const srcWide = new URL(srcWoQuery);
+  srcNarrow.searchParams.append("auto", "compress,format");
+  srcNarrow.searchParams.append("fit", "clip");
+  srcNarrow.searchParams.append("w", "800");
+  srcNarrow.searchParams.append("h", "800");
+  srcWide.searchParams.append("auto", "compress,format");
+  srcWide.searchParams.append("fit", "crop");
+  srcWide.searchParams.append("w", "2400");
+  srcWide.searchParams.append("h", "800");
   return (
-    <div className="">
+    <div
+      className={ctl(`
+        border-black
+        border-t-5 border-b-5
+        md:border-b-[10px] md:border-t-[10px]
+        max-w-[1280px] mx-auto
+      `)}
+    >
       <img
-        className="border-b-[10px] border-t-[10px] border-black block max-w-[1280px] w-full mx-auto"
-        src={src}
+        className="w-full block md:hidden"
+        src={srcNarrow.toString()}
         alt=""
       />
+      <img className="w-full hidden md:block" src={srcWide.toString()} alt="" />
     </div>
   );
 };
