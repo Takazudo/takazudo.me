@@ -372,27 +372,27 @@ const ArticleTagsVertical = ({ tags }) => {
 
 const ShareBarRightTop = ({ pageUrl }) => {
   return (
-    <div className="absolute right-0 top-0">
+    <div className="absolute right-0 top-[-2px]">
       <dl className="flex">
         <dt
           className={ctl(`
             nowrap
-            text-sm font-futura
+            text-xs font-futura
             self-center
             pr-hgap-xs
             hidden sm:block
         `)}
         >
-          Share
+          <span>Share</span>
         </dt>
         <dd className="pr-hgap-2xs">
           <TwitterShareButton pageUrl={pageUrl}>
-            <TwitterIcon className="w-[24px] h-[24px] block" />
+            <TwitterIcon className="w-[28px] h-[28px] block" />
           </TwitterShareButton>
         </dd>
         <dd>
           <FacebookShareButton pageUrl={pageUrl}>
-            <FacebookIcon className="w-[22px] h-[22px] block" />
+            <FacebookIcon className="w-[26px] h-[26px] block" />
           </FacebookShareButton>
         </dd>
       </dl>

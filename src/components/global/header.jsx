@@ -21,7 +21,7 @@ const Header = () => {
             text-lg md:text-xl lg:text-2xl
           `)}
         >
-          <a href="/">takazudo.me</a>
+          <a href="/" className="no-underline">takazudo.me</a>
         </div>
         <div className="md:hidden">
           <MenuFlyout items={data} />

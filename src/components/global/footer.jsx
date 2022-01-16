@@ -1,22 +1,43 @@
 import * as React from "react";
+import ctl from "@netlify/classnames-template-literals";
 
 const Footer = () => {
+  const navData = [
+    { href: "/", text: "Home" },
+    { href: "/about", text: "About" },
+    { href: "/articles", text: "Articles" },
+  ];
   return (
-    <footer className="bg-black text-white px-hgap-lg py-vgap-lg mt-vgap-lg flex font-futura">
-      <div className="self-center grow">takazudo.me</div>
-      <nav className="self-center grow-0">
-        <ul className="flex self-center space-x-hgap-sm">
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/">About</a>
-          </li>
-          <li>
-            <a href="/">Articles</a>
-          </li>
-        </ul>
-      </nav>
+    <footer
+      className={ctl(`
+        px-hgap-sm
+        font-futura
+        bg-black text-white
+      `)}
+    >
+      <div
+        className={ctl(`
+          mx-auto max-w-[1040px]
+          py-vgap-md
+          mt-vgap-lg
+          flex items-center
+        `)}
+      >
+        <div className="grow hidden sm:block">
+          <a href="/">takazudo.me</a>
+        </div>
+        <nav className="grow-0">
+          <ul className="flex self-center space-x-hgap-sm">
+            {navData.map((item) => {
+              return (
+                <li key={item.href}>
+                  <a href={item.href}>{item.text}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
     </footer>
   );
 };

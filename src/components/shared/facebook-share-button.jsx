@@ -9,7 +9,7 @@ const FacebookShareButton = ({ children, pageUrl }) => {
     });
   };
   return (
-    <button className="facebook-share-button" onClick={share}>
+    <button className="facebook-share-button block" onClick={share}>
       {children}
     </button>
   );
