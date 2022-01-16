@@ -2,8 +2,8 @@ import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
 import TwitterIcon from "../assets/svgs/twitter.svg";
 import FacebookIcon from "../assets/svgs/facebook.svg";
-import { Header } from "./shared/header";
-import { Footer } from "./shared/footer";
+import { Header } from "./global/header";
+import { Footer } from "./global/footer";
 import { TwitterShareButton } from "./shared/twitter-share-button";
 import { FacebookShareButton } from "./shared/facebook-share-button";
 

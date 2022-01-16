@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { ArticlePageLayout } from "./article-page-layout";
-import { HeadMeta } from "./shared/head-meta";
+import { HeadMeta } from "./global/head-meta";
 import { Intro } from "./article/intro";
 import { Body } from "./article/body";
 import { Outro } from "./article/outro";

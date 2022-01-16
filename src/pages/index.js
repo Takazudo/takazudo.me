@@ -2,8 +2,8 @@ import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
 import TwitterIcon from "../assets/svgs/twitter.svg";
 import FacebookIcon from "../assets/svgs/facebook.svg";
-import { Header } from "../components/shared/header";
-import { Footer } from "../components/shared/footer";
+import { Header } from "../components/global/header";
+import { Footer } from "../components/global/footer";
 
 const Tag = ({ text }) => {
   return (
