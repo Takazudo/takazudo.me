@@ -5,6 +5,7 @@ import FacebookIcon from "../assets/svgs/facebook.svg";
 import { Header } from "./shared/header";
 import { Footer } from "./shared/footer";
 import { TwitterShareButton } from "./shared/twitter-share-button";
+import { FacebookShareButton } from "./shared/facebook-share-button";
 
 import tw from "twin.macro";
 import { css } from "@emotion/css";
@@ -245,21 +246,6 @@ const styledClassNames = {
       color: green;
     }
   `,
-};
-
-const FacebookShareButton = ({ children, pageUrl }) => {
-  const facebookShare = () => {
-    window.FB.ui({
-      display: "popup",
-      method: "share",
-      href: pageUrl,
-    });
-  };
-  return (
-    <button className="facebook-share-button" onClick={facebookShare}>
-      {children}
-    </button>
-  );
 };
 
 const Tag = ({ text }) => {
