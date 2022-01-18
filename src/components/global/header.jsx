@@ -1,13 +1,10 @@
 import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
 import { MenuFlyout } from "./menu-flyout";
+import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
 const Header = () => {
-  const navData = [
-    { href: "/", text: "Home" },
-    { href: "/about", text: "About" },
-    { href: "/notes", text: "Notes" },
-  ];
+  const { globalNav } = useSiteMetadata();
   return (
     <div className="px-hgap-sm">
       {/* 
@@ -26,11 +23,11 @@ const Header = () => {
           </a>
         </div>
         <div className="md:hidden">
-          <MenuFlyout items={navData} />
+          <MenuFlyout items={globalNav} />
         </div>
         <nav className="grow-0 text-lg hidden md:block">
           <ul className="flex space-x-hgap-sm">
-            {navData.map((item) => {
+            {globalNav.map((item) => {
               return (
                 <li key={item.href}>
                   <a href={item.href}>{item.text}</a>

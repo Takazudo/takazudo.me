@@ -6,6 +6,7 @@ import { Header } from "./global/header";
 import { Footer } from "./global/footer";
 import { TwitterShareButton } from "./shared/twitter-share-button";
 import { FacebookShareButton } from "./shared/facebook-share-button";
+import { parsePublishedDateFromPath } from "../utils/misc";
 
 import tw from "twin.macro";
 import { css } from "@emotion/css";
@@ -333,11 +334,10 @@ const ShareBarVertical = ({ pageUrl }) => {
   );
 };
 
-const ArticleDate = ({ publishedDate }) => {
+const ArticleDate = ({ path }) => {
   return (
     <p className="text-sm text-gray-500 font-futura">
-      {publishedDate.year}/{publishedDate.month}/{publishedDate.dayOfMonth} (
-      {publishedDate.dayOfWeekEn})
+      {parsePublishedDateFromPath(path).formattedDateString}
     </p>
   );
 };
@@ -414,7 +414,7 @@ const ArticleTitle = ({ title }) => {
 
 const ArticlePageLayout = ({
   title,
-  publishedDate,
+  path,
   heroImgUrl,
   tags,
   articleHtml,
@@ -439,7 +439,7 @@ const ArticlePageLayout = ({
         `)}
         >
           <div className="md:col-start-2">
-            <ArticleDate publishedDate={publishedDate} />
+            <ArticleDate path={path} />
             <div className="pt-vgap-xs">
               <ArticleTitle title={title} />
             </div>

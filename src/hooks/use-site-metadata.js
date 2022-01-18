@@ -11,6 +11,10 @@ export const useSiteMetadata = () => {
             siteUrl
             description
             imgUrl
+            globalNav {
+              href
+              text
+            }
           }
         }
       }

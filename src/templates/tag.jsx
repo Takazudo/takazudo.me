@@ -1,0 +1,175 @@
+import * as React from "react";
+import { graphql } from "gatsby";
+import ctl from "@netlify/classnames-template-literals";
+import { Header } from "../components/global/header";
+import { Footer } from "../components/global/footer";
+import { parsePublishedDateFromPath } from "../utils/misc";
+
+export const query = graphql`
+  query TagLeafPageQuery($tag: [String]) {
+    allMdx(filter: { frontmatter: { tags: { in: $tag } } }) {
+      edges {
+        node {
+          id
+          slug
+          frontmatter {
+            title
+            heroImgUrl
+            excerpt
+          }
+        }
+      }
+    }
+  }
+`;
+
+const Article = ({ slug, title, imgUrl, excerpt }) => {
+  const { formattedDateString } = parsePublishedDateFromPath(slug);
+  return (
+    <a
+      href={`/${slug}`}
+      className={ctl(`
+        block
+        no-underline hover:underline focus:underline
+        border-t border-black
+        pt-vgap-md border-dashed
+        sm:pt-0 sm:border-t-0
+      `)}
+    >
+      <div
+        className={ctl(`
+          grid
+          grid-cols-3
+          grid-rows-[auto_auto_1fr]
+          gap-x-hgap-sm
+      `)}
+      >
+        <div className="row-span-2 sm:row-span-3">
+          <img
+            className={ctl(`
+              block w-full
+              border-y-5 border-black
+              md:border-y-10
+            `)}
+            src={imgUrl}
+            alt=""
+          />
+        </div>
+        <p
+          className={ctl(`
+            font-futura no-underline text-gray-500 
+            text-xs sm:text-sm
+            col-span-2   
+          `)}
+        >
+          {formattedDateString}
+        </p>
+        <h2 className="col-span-2 text-lg underline pt-vgap-xs line-clamp-3 font-bold">
+          {title}
+        </h2>
+        <p
+          className={ctl(`
+            col-span-3 sm:col-span-2
+            text-sm sm:text-base
+            no-underline line-clamp-3
+            pt-vgap-sm 
+          `)}
+        >
+          {excerpt}
+        </p>
+      </div>
+    </a>
+  );
+};
+
+/* data example
+{
+  "data": {
+    "allMdx": {
+      "edges": [
+        {
+          "node": {
+            "id": "483ef06d-b20a-572d-8360-9015f4f0ed1e",
+            "slug": "notes/2022-01-12-hogehoge",
+            "frontmatter": {
+              "title": "彼のこの仕事への恐れを和らげる彼のこの仕事への恐れを和らげる",
+              "heroImgUrl": "https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=1200&h=400",
+              "excerpt": "にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。 彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。彼は足音が止まったことに気が着いた。あわてて辺りを見回す。ふと狭い抜け道に目が止まる。 彼は素早く右に身を翻し、建物の間に消え去った。その時彼は、もう少しで道の真中に転がっていたごみバケツに躓き転ぶところだった。"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "15d5aac8-7128-517a-856f-4ce652bacef8",
+            "slug": "notes/2022-01-13-moomoo",
+            "frontmatter": {
+              "title": "彼は背後にひそかな足音",
+              "heroImgUrl": "https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=1200&h=400",
+              "excerpt": "彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。 彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。彼は足音が止まったことに気が着いた。あわてて辺りを見回す。ふと狭い抜け道に目が止まる。 彼は素早く右に身を翻し、建物の間に消え去った。その時彼は、もう少しで道の真中に転がっていたごみバケツに躓き転ぶところだった。"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "extensions": {}
+}
+*/
+
+const Page = ({ pageContext, data }) => {
+  console.log(pageContext.tag);
+  console.log(data);
+  return (
+    <>
+      <Header />
+      <h1
+        className={ctl(`
+          border-black 
+          border-t-5 md:border-t-[10px]
+          max-w-[1280px] mx-auto px-hgap-sm
+          pt-vgap-md sm:pt-vgap-lg
+          sm:pb-vgap-md
+          font-futura text-lg sm:text-xl lg:text-2xl
+          text-center
+        `)}
+      >
+        #{pageContext.tag}
+      </h1>
+      <div
+        className={ctl(`
+          max-w-[1280px] mx-auto px-hgap-sm pt-vgap-md
+        `)}
+      >
+        <div
+          className={ctl(`
+            grid 
+            grid-cols-[1fr]
+            md:grid-cols-[1fr_1fr]
+            gap-x-hgap-md gap-y-vgap-md
+            sm:gap-y-vgap-lg
+          `)}
+        >
+          {data.allMdx.edges.map(({ node }) => {
+            const {
+              slug,
+              id,
+              frontmatter: { title, heroImgUrl: imgUrl, excerpt },
+            } = node;
+            return (
+              <Article
+                slug={slug}
+                title={title}
+                imgUrl={imgUrl}
+                excerpt={excerpt}
+                key={id}
+              />
+            );
+          })}
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default Page;

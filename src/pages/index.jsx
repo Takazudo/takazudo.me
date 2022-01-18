@@ -86,8 +86,9 @@ const IndexPage = () => {
         >
           Notes by{" "}
           <a href="https://twitter.com/Takazudo" rel="noreferrer">
-            @Takazudo.
+            @Takazudo
           </a>
+          .
         </p>
         <div
           className={ctl(`

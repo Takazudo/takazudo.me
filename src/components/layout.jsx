@@ -9,38 +9,6 @@ import { UrlReference } from "./article/url-reference";
 import { Youtube } from "./article/youtube";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
 
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-
-dayjs.extend(customParseFormat);
-
-/**
- * convert
- * "/notes/2022-01-12-hogehoge"
- * into
- * "2022 01 12 Wed"
- */
-const parsePublishedDate = ({ pathname }) => {
-  const matchResult = pathname.match(/^\/notes\/(\d+)-(\d+)-(\d+)-.+/);
-  const year = matchResult[1];
-  const month = matchResult[2];
-  const dayOfMonth = matchResult[3];
-  const dayOfWeekNth = dayjs(
-    `${year}-${month}-${dayOfMonth}`,
-    "YYYY-MM-DD"
-  ).day();
-  const dayOfWeekEn = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][
-    dayOfWeekNth
-  ];
-  //console.log(year, month, dayOfMonth, dayOfWeekEn);
-  return {
-    year,
-    month,
-    dayOfMonth,
-    dayOfWeekEn,
-  };
-};
-
 const H2 = ({ id, children }) => {
   return (
     <h2 id={id}>
@@ -96,9 +64,7 @@ const Layout = (props) => {
       />
       <ArticlePageLayout
         title={title}
-        publishedDate={parsePublishedDate({
-          pathname: props.location.pathname,
-        })}
+        path={props.location.pathname}
         heroImgUrl={heroImgUrl}
         tags={tags}
         articleHtml={children}
