@@ -10,3 +10,8 @@
     @apply underline;
   }
 }
+@layer utilities {
+  .zudo-hash {
+    letter-spacing: .15em;
+  }
+}

@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const createTagLeafPage = async () => {
     const template = path.resolve("src/templates/tag.jsx");
     const result = await graphql(`
-      query TagsQuery {
+      query TagLeafPageQuery {
         allMdx {
           nodes {
             frontmatter {

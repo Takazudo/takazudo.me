@@ -1,48 +1,31 @@
 import * as React from "react";
+import { graphql } from "gatsby";
 import ctl from "@netlify/classnames-template-literals";
 import { Header } from "../components/global/header";
 import { Footer } from "../components/global/footer";
 
-const tags = [
-  "The1",
-  "quick2",
-  "brown3",
-  "fox4",
-  "jumps5",
-  "over6",
-  "the7",
-  "lazy8",
-  "dog9",
-  "The10",
-  "quick11",
-  "brown12",
-  "fox13",
-  "jumps14",
-  "over15",
-  "the16",
-  "lazy17",
-  "dog18",
-  "The19",
-  "quick20",
-  "brown21",
-  "fox22",
-  "jumps23",
-  "over24",
-  "the25",
-  "lazy26",
-  "dog27",
-  "The28",
-  "quick29",
-  "brown30",
-  "fox31",
-  "jumps32",
-  "over33",
-  "the34",
-  "lazy35",
-  "dog36",
-];
+export const query = graphql`
+  query TagListPageQuery {
+    allMdx {
+      nodes {
+        frontmatter {
+          tags
+        }
+      }
+    }
+  }
+`;
 
-const TagListPage = () => {
+const collectTags = (data) => {
+  let tags = [];
+  data.allMdx.nodes.forEach((node) => {
+    tags = tags.concat(node.frontmatter.tags);
+  });
+  return Array.from(new Set(tags));
+};
+
+const TagListPage = ({ data }) => {
+  const tags = collectTags(data);
   return (
     <>
       <div>
@@ -73,7 +56,7 @@ const TagListPage = () => {
           {tags.map((tag) => {
             return (
               <div key={tag}>
-                <a href="/">#{tag}</a>
+                <a href="/"><span className="zudo-hash">#</span>{tag}</a>
               </div>
             );
           })}

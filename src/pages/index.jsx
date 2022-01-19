@@ -53,6 +53,7 @@ const Article = () => {
             col-span-3 sm:col-span-2
             text-sm sm:text-base
             no-underline line-clamp-3
+            h-[5.5em]
             pt-vgap-sm 
           `)}
         >
