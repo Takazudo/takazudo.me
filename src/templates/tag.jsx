@@ -1,9 +1,9 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import ctl from "@netlify/classnames-template-literals";
 import { Header } from "../components/global/header";
 import { Footer } from "../components/global/footer";
-import { parsePublishedDateFromPath } from "../utils/misc";
+import { PageTitle } from "../components/shared/page-title";
+import { ArticleNav } from "../components/shared/article-nav";
 
 export const query = graphql`
   query TagLeafPageQuery($tag: [String]) {
@@ -22,65 +22,6 @@ export const query = graphql`
     }
   }
 `;
-
-const Article = ({ slug, title, imgUrl, excerpt }) => {
-  const { formattedDateString } = parsePublishedDateFromPath(slug);
-  return (
-    <a
-      href={`/${slug}`}
-      className={ctl(`
-        block
-        no-underline hover:underline focus:underline
-        border-t border-black
-        pt-vgap-md border-dashed
-        sm:pt-0 sm:border-t-0
-      `)}
-    >
-      <div
-        className={ctl(`
-          grid
-          grid-cols-3
-          grid-rows-[auto_auto_1fr]
-          gap-x-hgap-sm
-      `)}
-      >
-        <div className="row-span-2 sm:row-span-3">
-          <img
-            className={ctl(`
-              block w-full
-              border-y-5 border-black
-              md:border-y-10
-            `)}
-            src={imgUrl}
-            alt=""
-          />
-        </div>
-        <p
-          className={ctl(`
-            font-futura no-underline text-gray-500 
-            text-xs sm:text-sm
-            col-span-2   
-          `)}
-        >
-          {formattedDateString}
-        </p>
-        <h2 className="col-span-2 text-lg underline pt-vgap-xs line-clamp-3 font-bold">
-          {title}
-        </h2>
-        <p
-          className={ctl(`
-            col-span-3 sm:col-span-2
-            text-sm sm:text-base
-            no-underline line-clamp-3
-            pt-vgap-sm 
-          `)}
-        >
-          {excerpt}
-        </p>
-      </div>
-    </a>
-  );
-};
 
 /* data example
 {
@@ -117,56 +58,30 @@ const Article = ({ slug, title, imgUrl, excerpt }) => {
 */
 
 const Page = ({ pageContext, data }) => {
-  console.log(pageContext.tag);
-  console.log(data);
+  //console.log(pageContext.tag);
+  //console.log(data);
+  const items = data.allMdx.edges.map(({ node }) => {
+    const {
+      slug,
+      id,
+      frontmatter: { title, heroImgUrl: imgUrl, excerpt },
+    } = node;
+    return {
+      slug,
+      title,
+      imgUrl,
+      excerpt,
+      id,
+    };
+  });
   return (
     <>
       <Header />
-      <h1
-        className={ctl(`
-          border-black 
-          border-t-5 md:border-t-[10px]
-          max-w-[1280px] mx-auto px-hgap-sm
-          pt-vgap-md sm:pt-vgap-lg
-          sm:pb-vgap-md
-          font-futura text-lg sm:text-xl lg:text-2xl
-          text-center
-        `)}
-      >
-        #{pageContext.tag}
-      </h1>
-      <div
-        className={ctl(`
-          max-w-[1280px] mx-auto px-hgap-sm pt-vgap-md
-        `)}
-      >
-        <div
-          className={ctl(`
-            grid 
-            grid-cols-[1fr]
-            md:grid-cols-[1fr_1fr]
-            gap-x-hgap-md gap-y-vgap-md
-            sm:gap-y-vgap-lg
-          `)}
-        >
-          {data.allMdx.edges.map(({ node }) => {
-            const {
-              slug,
-              id,
-              frontmatter: { title, heroImgUrl: imgUrl, excerpt },
-            } = node;
-            return (
-              <Article
-                slug={slug}
-                title={title}
-                imgUrl={imgUrl}
-                excerpt={excerpt}
-                key={id}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <PageTitle>
+        <span className="zudo-hash">#</span>
+        {pageContext.tag}
+      </PageTitle>
+      <ArticleNav items={items} />
       <Footer />
     </>
   );

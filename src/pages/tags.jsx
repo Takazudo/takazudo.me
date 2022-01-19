@@ -56,7 +56,10 @@ const TagListPage = ({ data }) => {
           {tags.map((tag) => {
             return (
               <div key={tag}>
-                <a href="/"><span className="zudo-hash">#</span>{tag}</a>
+                <a href={`/tags/${tag}`}>
+                  <span className="zudo-hash">#</span>
+                  {tag}
+                </a>
               </div>
             );
           })}

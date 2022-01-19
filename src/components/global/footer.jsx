@@ -17,7 +17,7 @@ const Footer = () => {
           className={ctl(`
             mx-auto max-w-[1040px]
             py-vgap-md
-            mt-vgap-lg
+            mt-vgap-md
             flex items-center
           `)}
         >

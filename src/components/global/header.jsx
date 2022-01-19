@@ -3,15 +3,16 @@ import ctl from "@netlify/classnames-template-literals";
 import { MenuFlyout } from "./menu-flyout";
 import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
-const Header = () => {
+const Header = ({ logoTagName = "div" }) => {
   const { globalNav } = useSiteMetadata();
+  const LogoTag = logoTagName;
   return (
     <div className="px-hgap-sm">
       {/* 
         1280px - 120px*2
       */}
       <header className="flex items-center font-futura mx-auto max-w-[1040px]">
-        <div
+        <LogoTag
           className={ctl(`
             grow font-bold
             py-[1rem] md:py-[2rem] 
@@ -21,7 +22,7 @@ const Header = () => {
           <a href="/" className="no-underline">
             takazudo.me
           </a>
-        </div>
+        </LogoTag>
         <div className="md:hidden">
           <MenuFlyout items={globalNav} />
         </div>

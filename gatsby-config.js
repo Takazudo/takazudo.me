@@ -9,7 +9,6 @@ module.exports = {
     globalNav: [
       { href: "/", text: "Home" },
       { href: "/about", text: "About" },
-      { href: "/notes", text: "Notes" },
       { href: "/tags", text: "Tags" },
     ],
   },
