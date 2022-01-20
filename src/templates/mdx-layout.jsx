@@ -1,12 +1,12 @@
 import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
-import { ArticlePageLayout } from "./article-page-layout";
-import { HeadMeta } from "./global/head-meta";
-import { Intro } from "./article/intro";
-import { Body } from "./article/body";
-import { Outro } from "./article/outro";
-import { UrlReference } from "./article/url-reference";
-import { Youtube } from "./article/youtube";
+import { ArticlePageLayout } from "../components/article-page-layout";
+import { HeadMeta } from "../components/global/head-meta";
+import { Intro } from "../components/article/intro";
+import { Body } from "../components/article/body";
+import { Outro } from "../components/article/outro";
+import { UrlReference } from "../components/article/url-reference";
+import { Youtube } from "../components/article/youtube";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
 
 const H2 = ({ id, children }) => {
