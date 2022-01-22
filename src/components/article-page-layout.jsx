@@ -300,13 +300,13 @@ const HeroImg = ({ src }) => {
   );
 };
 
-const ShareBarVertical = ({ pageUrl }) => {
+const ShareBarVertical = ({ pageUrl, title }) => {
   return (
     <div>
       <dl className="flex flex-col text-center mr-auto">
         <dt className="pb-hgap-sm nowrap text-sm font-futura">Share</dt>
         <dd className="pb-hgap-sm flex items-center flex-col">
-          <TwitterShareButton pageUrl={pageUrl}>
+          <TwitterShareButton pageUrl={pageUrl} title={title}>
             <TwitterIcon
               className={ctl(`
                 w-[30px] h-[30px]
@@ -382,7 +382,7 @@ const ArticleTagsVertical = ({ tags = [] }) => {
   );
 };
 
-const ShareBarRightTop = ({ pageUrl }) => {
+const ShareBarRightTop = ({ pageUrl, title }) => {
   return (
     <div className="absolute right-0 top-[-2px]">
       <dl className="flex">
@@ -398,7 +398,7 @@ const ShareBarRightTop = ({ pageUrl }) => {
           <span>Share</span>
         </dt>
         <dd className="pr-hgap-2xs">
-          <TwitterShareButton pageUrl={pageUrl}>
+          <TwitterShareButton pageUrl={pageUrl} title={title}>
             <TwitterIcon className="w-[28px] h-[28px] block" />
           </TwitterShareButton>
         </dd>
@@ -461,7 +461,7 @@ const ArticlePageLayout = ({
             md:col-start-1 md:row-start-2
           `)}
         >
-          <ShareBarVertical pageUrl={pageUrl} />
+          <ShareBarVertical pageUrl={pageUrl} title={title} />
         </div>
 
         <div
@@ -483,7 +483,7 @@ const ArticlePageLayout = ({
             <ArticleTagsHorizontal tags={tags} />
           </div>
           <div className="pt-vgap-sm md:hidden pb-vgap-sm md:pb-[0px]">
-            <ShareBarRightTop pageUrl={pageUrl} />
+            <ShareBarRightTop pageUrl={pageUrl} title={title} />
           </div>
           <ArticleBody html={articleHtml} />
         </div>
