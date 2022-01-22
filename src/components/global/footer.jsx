@@ -1,5 +1,6 @@
 import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
+import { Link } from "../shared/link";
 import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
 const Footer = () => {
@@ -22,14 +23,14 @@ const Footer = () => {
           `)}
         >
           <div className="grow hidden sm:block">
-            <a href="/">takazudo.me</a>
+            <Link to="/">takazudo.me</Link>
           </div>
           <nav className="grow-0">
             <ul className="flex self-center space-x-hgap-sm">
               {globalNav.map((item) => {
                 return (
                   <li key={item.href}>
-                    <a href={item.href}>{item.text}</a>
+                    <Link to={item.href}>{item.text}</Link>
                   </li>
                 );
               })}

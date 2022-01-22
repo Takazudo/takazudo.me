@@ -1,5 +1,6 @@
 import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
+import { Link } from "../shared/link";
 import { MenuFlyout } from "./menu-flyout";
 import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
@@ -19,9 +20,9 @@ const Header = ({ logoTagName = "div" }) => {
             text-lg md:text-xl lg:text-2xl
           `)}
         >
-          <a href="/" className="no-underline">
+          <Link to="/" className="no-underline">
             takazudo.me
-          </a>
+          </Link>
         </LogoTag>
         <div className="md:hidden">
           <MenuFlyout items={globalNav} />
@@ -31,7 +32,7 @@ const Header = ({ logoTagName = "div" }) => {
             {globalNav.map((item) => {
               return (
                 <li key={item.href}>
-                  <a href={item.href}>{item.text}</a>
+                  <Link to={item.href}>{item.text}</Link>
                 </li>
               );
             })}

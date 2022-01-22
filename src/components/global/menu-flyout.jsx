@@ -3,6 +3,7 @@ import { css } from "@emotion/css";
 import ctl from "@netlify/classnames-template-literals";
 import tw from "twin.macro";
 import { Menu, Transition } from "@headlessui/react";
+import { Link } from "../shared/link";
 
 /*!
  * Hamburgers
@@ -154,8 +155,8 @@ const MenuFlyout = ({ className, items = [] }) => {
                 {items.map((item) => (
                   <Menu.Item key={item.href}>
                     {({ active }) => (
-                      <a
-                        href={item.href}
+                      <Link
+                        to={item.href}
                         className={ctl(`
                           block relative z-50
                           text-black px-hgap-xs rounded-md
@@ -165,7 +166,7 @@ const MenuFlyout = ({ className, items = [] }) => {
                         `)}
                       >
                         {item.text}
-                      </a>
+                      </Link>
                     )}
                   </Menu.Item>
                 ))}

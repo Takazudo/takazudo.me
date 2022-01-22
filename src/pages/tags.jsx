@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import ctl from "@netlify/classnames-template-literals";
+import { Link } from "../components/shared/link";
 
 export const query = graphql`
   query TagListPageQuery {
@@ -55,10 +56,10 @@ const TagListPage = ({ data }) => {
         {tags.map((tag) => {
           return (
             <div key={tag}>
-              <a href={`/tags/${tag}`}>
+              <Link to={`/tags/${tag}`}>
                 <span className="zudo-hash">#</span>
                 {tag}
-              </a>
+              </Link>
             </div>
           );
         })}

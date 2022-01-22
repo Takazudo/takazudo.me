@@ -1,5 +1,6 @@
 import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
+import { Link } from "../shared/link";
 import { parsePublishedDateFromPath } from "../../utils/misc";
 import { tweakImgUrl } from "../../utils/misc";
 
@@ -9,8 +10,8 @@ const Article = ({ slug, title, imgUrl, excerpt }) => {
     slug = `/${slug}`;
   }
   return (
-    <a
-      href={slug}
+    <Link
+      to={slug}
       className={ctl(`
         block
         no-underline hover:underline focus:underline
@@ -62,7 +63,7 @@ const Article = ({ slug, title, imgUrl, excerpt }) => {
           {excerpt}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
