@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import ctl from "@netlify/classnames-template-literals";
 import { Link } from "../components/shared/link";
+import { HeadMeta } from "../components/global/head-meta";
 
 export const query = graphql`
   query TagListPageQuery {
@@ -26,10 +27,16 @@ const collectTags = (data) => {
   return Array.from(new Set(tags));
 };
 
-const TagListPage = ({ data }) => {
+const TagListPage = ({ data, location }) => {
   const tags = collectTags(data);
   return (
     <>
+      <HeadMeta
+        pageTitle="Tags"
+        pageDescription="takazudo.meのタグの一覧です"
+        isArticle={false}
+        path={location.pathname}
+      />
       <h1
         className={ctl(`
             border-black 

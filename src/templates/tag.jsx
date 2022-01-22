@@ -1,5 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import { HeadMeta } from "../components/global/head-meta";
 import { PageTitle } from "../components/shared/page-title";
 import { ArticleNav } from "../components/shared/article-nav";
 
@@ -55,7 +56,7 @@ export const query = graphql`
 }
 */
 
-const Page = ({ pageContext, data }) => {
+const Page = ({ pageContext, data, location }) => {
   //console.log(pageContext.tag);
   //console.log(data);
   const items = data.allMdx.edges.map(({ node }) => {
@@ -74,6 +75,12 @@ const Page = ({ pageContext, data }) => {
   });
   return (
     <>
+      <HeadMeta
+        pageTitle={`#${pageContext.tag}`}
+        pageDescription={`タグ #${pageContext.tag} が設定されている記事の一覧です`}
+        isArticle={false}
+        path={location.pathname}
+      />
       <PageTitle>
         <span className="zudo-hash">#</span>
         {pageContext.tag}
