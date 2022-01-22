@@ -10,6 +10,9 @@ dayjs.extend(customParseFormat);
  * "2022 01 12 Wed"
  */
 const parsePublishedDateFromPath = (pagePath) => {
+  if (!/^notes\/\d{4}-\d{2}-\d{2}-/.test(pagePath)) {
+    return null;
+  }
   const matchResult = pagePath.match(/^\/?notes\/(\d+)-(\d+)-(\d+)-.+/);
   const year = matchResult[1];
   const month = matchResult[2];

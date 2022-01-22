@@ -19,6 +19,9 @@ export const query = graphql`
 const collectTags = (data) => {
   let tags = [];
   data.allMdx.nodes.forEach((node) => {
+    if (!node.frontmatter.tags || node.frontmatter.tags.length === 0) {
+      return;
+    }
     tags = tags.concat(node.frontmatter.tags);
   });
   return Array.from(new Set(tags));

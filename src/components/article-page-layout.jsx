@@ -335,29 +335,41 @@ const ShareBarVertical = ({ pageUrl }) => {
 };
 
 const ArticleDate = ({ path }) => {
-  return (
-    <p className="text-sm text-gray-500 font-futura">
-      {parsePublishedDateFromPath(path).formattedDateString}
-    </p>
-  );
-};
-
-const ArticleTagsHorizontal = ({ tags }) => {
-  return (
-    <aside>
-      <ul className="text-sm flex flex-wrap -ml-hgap-xs -mt-hgap-xs">
-        {tags.map((tag) => {
-          return <Tag text={tag} key={tag} />;
-        })}
-      </ul>
-    </aside>
-  );
-};
-
-const ArticleTagsVertical = ({ tags }) => {
+  const publishedDate = parsePublishedDateFromPath(path);
   return (
     <>
-      {tags.length && (
+      {publishedDate && (
+        <p className="text-sm text-gray-500 font-futura">
+          {parsePublishedDateFromPath(path).formattedDateString}
+        </p>
+      )}
+      {!publishedDate && (
+        <div className="text-sm" aria-hidden="true">&nbsp;</div>
+      )}
+    </>
+  );
+};
+
+const ArticleTagsHorizontal = ({ tags = [] }) => {
+  return (
+    <>
+      {!!tags.length && (
+        <aside>
+          <ul className="text-sm flex flex-wrap -ml-hgap-xs -mt-hgap-xs">
+            {tags.map((tag) => {
+              return <Tag text={tag} key={tag} />;
+            })}
+          </ul>
+        </aside>
+      )}
+    </>
+  );
+};
+
+const ArticleTagsVertical = ({ tags = [] }) => {
+  return (
+    <>
+      {!!tags.length && (
         <aside>
           <ul className="text-sm lg:text-base -ml-hgap-xs -mt-hgap-xs">
             {tags.map((tag) => {

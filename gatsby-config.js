@@ -8,7 +8,7 @@ module.exports = {
     imgUrl: `https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=1200&h=400`,
     globalNav: [
       { href: "/", text: "Home" },
-      { href: "/about", text: "About" },
+      { href: "/notes/about", text: "About" },
       { href: "/tags", text: "Tags" },
     ],
   },
