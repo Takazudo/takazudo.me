@@ -1,6 +1,5 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import ctl from "@netlify/classnames-template-literals";
 import { Header } from "../components/global/header";
 import { Footer } from "../components/global/footer";
 import { PageTitle } from "../components/shared/page-title";
@@ -67,16 +66,16 @@ const pickLatestArticles = (items) => {
     }
     return 0;
   });
-  items.length = 10;
   return items;
 };
 
 const IndexPage = ({ data }) => {
   let items = tweakRawDataForView(data);
-  console.log(items);
+  //console.log(items);
   items = removeNoDateArticles(items);
-  console.log(items);
+  //console.log(items);
   items = pickLatestArticles(items);
+  items.length = 10;
   return (
     <>
       <Header logoTagName="h1" />
