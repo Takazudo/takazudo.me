@@ -2,8 +2,6 @@ import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
 import TwitterIcon from "../assets/svgs/twitter.svg";
 import FacebookIcon from "../assets/svgs/facebook.svg";
-import { Header } from "./global/header";
-import { Footer } from "./global/footer";
 import { TwitterShareButton } from "./shared/twitter-share-button";
 import { FacebookShareButton } from "./shared/facebook-share-button";
 import { parsePublishedDateFromPath } from "../utils/misc";
@@ -339,12 +337,14 @@ const ArticleDate = ({ path }) => {
   return (
     <>
       {publishedDate && (
-        <p className="text-sm text-gray-500 font-futura">
-          {parsePublishedDateFromPath(path).formattedDateString}
+        <p className="text-sm text-gray-500 font-futura tracking-wider">
+          {publishedDate.formattedDateString}
         </p>
       )}
       {!publishedDate && (
-        <div className="text-sm" aria-hidden="true">&nbsp;</div>
+        <div className="text-sm" aria-hidden="true">
+          &nbsp;
+        </div>
       )}
     </>
   );
@@ -434,11 +434,9 @@ const ArticlePageLayout = ({
 }) => {
   return (
     <>
-      <div>
-        <Header />
-        <HeroImg src={heroImgUrl} />
-        <div
-          className={ctl(`
+      <HeroImg src={heroImgUrl} />
+      <div
+        className={ctl(`
             md:grid 
             md:grid-cols-[80px_minmax(0,1fr)_180px]
             lg:grid-cols-[100px_minmax(0,1fr)_220px]
@@ -449,49 +447,47 @@ const ArticlePageLayout = ({
             mx-hgap-sm md:mx-auto
             relative
         `)}
-        >
-          <div className="md:col-start-2">
-            <ArticleDate path={path} />
-            <div className="pt-vgap-xs">
-              <ArticleTitle title={title} />
-            </div>
+      >
+        <div className="md:col-start-2">
+          <ArticleDate path={path} />
+          <div className="pt-vgap-xs">
+            <ArticleTitle title={title} />
           </div>
+        </div>
 
-          <div
-            className={ctl(`
+        <div
+          className={ctl(`
             hidden md:block
             md:col-start-1 md:row-start-2
           `)}
-          >
-            <ShareBarVertical pageUrl={pageUrl} />
-          </div>
+        >
+          <ShareBarVertical pageUrl={pageUrl} />
+        </div>
 
-          <div
-            className={ctl(`
+        <div
+          className={ctl(`
             hidden md:block
             md:col-start-3 md:row-start-2
             md:pl-hgap-sm
           `)}
-          >
-            <ArticleTagsVertical tags={tags} />
-          </div>
+        >
+          <ArticleTagsVertical tags={tags} />
+        </div>
 
-          <div
-            className={ctl(`
+        <div
+          className={ctl(`
             md:col-start-2 md:row-start-2
           `)}
-          >
-            <div className="pt-vgap-sm md:hidden">
-              <ArticleTagsHorizontal tags={tags} />
-            </div>
-            <div className="pt-vgap-sm md:hidden pb-vgap-sm md:pb-[0px]">
-              <ShareBarRightTop pageUrl={pageUrl} />
-            </div>
-            <ArticleBody html={articleHtml} />
+        >
+          <div className="pt-vgap-sm md:hidden">
+            <ArticleTagsHorizontal tags={tags} />
           </div>
+          <div className="pt-vgap-sm md:hidden pb-vgap-sm md:pb-[0px]">
+            <ShareBarRightTop pageUrl={pageUrl} />
+          </div>
+          <ArticleBody html={articleHtml} />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

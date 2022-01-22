@@ -22,7 +22,7 @@ Object.keys(lengthCollection).map((key) => {
   lengthCollectionPx[key] = `${lengthCollection[key]}px`;
 });
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx,mdx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx,mdx}", "./*.js"],
 
   theme: {
     spacing: {
@@ -46,7 +46,7 @@ module.exports = {
       10: "10px",
     },
     fontFamily: {
-      futura: ["Futura", "Hind", "sans-serif"],
+      futura: ["Futura", "Ubuntu", "sans-serif"],
       mono: [
         "Menlo",
         "Monaco",

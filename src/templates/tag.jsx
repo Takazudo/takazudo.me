@@ -1,7 +1,5 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Header } from "../components/global/header";
-import { Footer } from "../components/global/footer";
 import { PageTitle } from "../components/shared/page-title";
 import { ArticleNav } from "../components/shared/article-nav";
 
@@ -76,13 +74,11 @@ const Page = ({ pageContext, data }) => {
   });
   return (
     <>
-      <Header />
       <PageTitle>
         <span className="zudo-hash">#</span>
         {pageContext.tag}
       </PageTitle>
       <ArticleNav items={items} />
-      <Footer />
     </>
   );
 };

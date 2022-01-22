@@ -1,7 +1,5 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Header } from "../components/global/header";
-import { Footer } from "../components/global/footer";
 import { PageTitle } from "../components/shared/page-title";
 import { ArticleNav } from "../components/shared/article-nav";
 import { parsePublishedDateFromPath } from "../utils/misc";
@@ -78,7 +76,6 @@ const IndexPage = ({ data }) => {
   items.length = 10;
   return (
     <>
-      <Header logoTagName="h1" />
       <PageTitle tagName="p">
         Notes by{" "}
         <a href="https://twitter.com/Takazudo" rel="noreferrer">
@@ -86,7 +83,6 @@ const IndexPage = ({ data }) => {
         </a>
       </PageTitle>
       <ArticleNav items={items} />
-      <Footer />
     </>
   );
 };

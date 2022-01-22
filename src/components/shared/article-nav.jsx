@@ -43,6 +43,7 @@ const Article = ({ slug, title, imgUrl, excerpt }) => {
             font-futura no-underline text-gray-500 
             text-xs sm:text-sm
             col-span-2   
+            tracking-wider
           `)}
         >
           {formattedDateString}

@@ -1,8 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import ctl from "@netlify/classnames-template-literals";
-import { Header } from "../components/global/header";
-import { Footer } from "../components/global/footer";
 import { PageTitle } from "../components/shared/page-title";
 import { parsePublishedDateFromPath } from "../utils/misc";
 
@@ -104,12 +102,11 @@ const ListPage = ({ data }) => {
   items = pickLatestArticles(items);
   return (
     <>
-      <Header />
       <PageTitle>Article List</PageTitle>
       <dl
         className={ctl(`
           box-content
-          max-w-[1040px] mx-auto px-hgap-sm pt-vgap-md 
+          max-w-[1040px] mx-auto px-hgap-sm
           flex flex-col
           gap-y-vgap-md
           sm:table
@@ -120,7 +117,6 @@ const ListPage = ({ data }) => {
           return <ListItem slug={item.slug} title={item.title} key={item.id} />;
         })}
       </dl>
-      <Footer />
     </>
   );
 };
