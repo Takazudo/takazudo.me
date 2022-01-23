@@ -109,6 +109,7 @@ const ListPage = ({ data }) => {
           max-w-[1040px] mx-auto px-hgap-sm
           flex flex-col
           gap-y-vgap-md
+          pb-vgap-sm
           sm:table
           sm:-mt-vgap-sm
         `)}

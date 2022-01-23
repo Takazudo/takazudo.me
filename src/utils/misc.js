@@ -35,28 +35,4 @@ const parsePublishedDateFromPath = (pagePath) => {
   };
 };
 
-const tweakImgUrl = (src) => {
-  const srcWoQuery = src.replace(/\?.*/, "");
-  const srcNarrow = new URL(srcWoQuery);
-  const srcWide = new URL(srcWoQuery);
-  const srcSquare = new URL(srcWoQuery);
-  srcNarrow.searchParams.append("auto", "compress,format");
-  srcNarrow.searchParams.append("fit", "clip");
-  srcNarrow.searchParams.append("w", "800");
-  srcNarrow.searchParams.append("h", "800");
-  srcWide.searchParams.append("auto", "compress,format");
-  srcWide.searchParams.append("fit", "crop");
-  srcWide.searchParams.append("w", "2400");
-  srcWide.searchParams.append("h", "800");
-  srcSquare.searchParams.append("auto", "compress,format");
-  srcSquare.searchParams.append("fit", "clip");
-  srcSquare.searchParams.append("w", "800");
-  srcSquare.searchParams.append("h", "800");
-  return {
-    srcNarrow,
-    srcWide,
-    srcSquare,
-  };
-};
-
-export { parsePublishedDateFromPath, tweakImgUrl };
+export { parsePublishedDateFromPath };

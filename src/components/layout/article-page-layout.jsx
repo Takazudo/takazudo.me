@@ -6,7 +6,8 @@ import TwitterIcon from "../../assets/svgs/twitter.svg";
 import FacebookIcon from "../../assets/svgs/facebook.svg";
 import { TwitterShareButton } from "../shared/twitter-share-button";
 import { FacebookShareButton } from "../shared/facebook-share-button";
-import { parsePublishedDateFromPath, tweakImgUrl } from "../../utils/misc";
+import { parsePublishedDateFromPath } from "../../utils/misc";
+import { ImgixGatsbyImage } from "@imgix/gatsby";
 
 const styledClassNames = {
   article: css`
@@ -268,7 +269,6 @@ const Tag = ({ text }) => {
 };
 
 const HeroImg = ({ src }) => {
-  const { srcNarrow, srcWide } = tweakImgUrl(src);
   return (
     <div
       className={ctl(`
@@ -276,14 +276,43 @@ const HeroImg = ({ src }) => {
         border-t-5 border-b-5
         md:border-b-[10px] md:border-t-[10px]
         max-w-[1280px] mx-auto
+        bg-black
       `)}
     >
-      <img
-        className="w-full block md:hidden"
-        src={srcNarrow.toString()}
-        alt=""
-      />
-      <img className="w-full hidden md:block" src={srcWide.toString()} alt="" />
+      {/* wide image */}
+      <div className="hidden md:block">
+        <ImgixGatsbyImage
+          src={src}
+          imgixParams={{
+            auto: ["format", "compress"],
+            fit: "crop",
+            ar: "3:1",
+          }}
+          layout="constrained"
+          className="w-full"
+          width="1200"
+          height="400"
+          aspectRatio={3 / 1}
+          alt=""
+        />
+      </div>
+      {/* narrow image */}
+      <div className="block md:hidden">
+        <ImgixGatsbyImage
+          src={src}
+          imgixParams={{
+            auto: ["format", "compress"],
+            fit: "crop",
+            ar: "3:2",
+          }}
+          layout="constrained"
+          className="w-full"
+          width="300"
+          height="200"
+          aspectRatio={3 / 2}
+          alt=""
+        />
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
 import { Link } from "../shared/link";
 import { parsePublishedDateFromPath } from "../../utils/misc";
-import { tweakImgUrl } from "../../utils/misc";
+import { ImgixGatsbyImage } from "@imgix/gatsby";
 
 const Article = ({ slug, title, imgUrl, excerpt }) => {
   const { formattedDateString } = parsePublishedDateFromPath(slug);
@@ -15,9 +15,9 @@ const Article = ({ slug, title, imgUrl, excerpt }) => {
       className={ctl(`
         block
         no-underline hover:underline focus:underline
-        border-t border-black
-        pt-vgap-md border-dashed
-        sm:pt-0 sm:border-t-0
+        border-t border-h
+        py-vgap-md border-dashed
+        md:pt-0 md:border-t-0
       `)}
     >
       <div
@@ -29,13 +29,22 @@ const Article = ({ slug, title, imgUrl, excerpt }) => {
       `)}
       >
         <div className="row-span-2 sm:row-span-3">
-          <img
+          <ImgixGatsbyImage
+            src={imgUrl}
+            imgixParams={{
+              auto: ["format", "compress"],
+              fit: "crop",
+              ar: "5:4",
+            }}
+            layout="constrained"
+            width="250"
+            height="200"
             className={ctl(`
-              block w-full
+              w-full bg-black
               border-y-5 border-black
               md:border-y-10
             `)}
-            src={tweakImgUrl(imgUrl).srcSquare}
+            aspectRatio={5/4}
             alt=""
           />
         </div>
@@ -79,8 +88,8 @@ const ArticleNav = ({ items }) => {
           grid 
           grid-cols-[1fr]
           md:grid-cols-[1fr_1fr]
-          gap-x-hgap-md gap-y-vgap-md
-          sm:gap-y-vgap-lg
+          gap-x-hgap-md
+          md:gap-y-vgap-lg
         `)}
       >
         {items.map((item) => {

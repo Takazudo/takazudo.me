@@ -52,13 +52,13 @@ const TagListPage = ({ data, location }) => {
       </h1>
       <div
         className={ctl(`
-            box-content
-            max-w-[1040px] mx-auto px-hgap-sm pt-vgap-md 
-            flex flex-wrap
-            font-futura text-lg sm:text-xl
-            gap-x-hgap-sm sm:gap-x-hgap-md
-            gap-y-vgap-sm sm:gap-y-vgap-md
-          `)}
+          box-content
+          max-w-[1040px] mx-auto px-hgap-sm pt-vgap-md pb-vgap-md
+          flex flex-wrap
+          font-futura text-lg sm:text-xl
+          gap-x-hgap-sm sm:gap-x-hgap-md
+          gap-y-vgap-sm sm:gap-y-vgap-md
+        `)}
       >
         {tags.map((tag) => {
           return (

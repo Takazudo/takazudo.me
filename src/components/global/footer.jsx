@@ -6,7 +6,7 @@ import { useSiteMetadata } from "../../hooks/use-site-metadata";
 const Footer = () => {
   const { globalNav } = useSiteMetadata();
   return (
-    <footer className="pt-vgap-sm sm:pt-vgap-md">
+    <footer>
       <div
         className={ctl(`
           px-hgap-sm

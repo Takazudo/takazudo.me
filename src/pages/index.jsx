@@ -1,8 +1,11 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import ctl from "@netlify/classnames-template-literals";
 import { PageTitle } from "../components/shared/page-title";
 import { ArticleNav } from "../components/shared/article-nav";
+import { Link } from "../components/shared/link";
 import { parsePublishedDateFromPath } from "../utils/misc";
+import ArrowRight from "../assets/svgs/arrow-right.svg";
 
 export const query = graphql`
   query IndexPageQuery {
@@ -83,6 +86,25 @@ const IndexPage = ({ data }) => {
         </a>
       </PageTitle>
       <ArticleNav items={items} />
+      <ul
+        className={ctl(`
+          text-center text-base pt-vgap-md font-futura
+          border-t border-black border-dashed md:border-t-0
+        `)}
+      >
+        <li>
+          <Link to="/list">
+            Older Notes
+            <ArrowRight
+              className={ctl(`
+                w-[1.2em] h-[1.2em]
+                inline-block align-middle ml-[4px]
+                relative top-[-0.1em]
+              `)}
+            />
+          </Link>
+        </li>
+      </ul>
     </>
   );
 };
