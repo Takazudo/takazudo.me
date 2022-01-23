@@ -5,6 +5,7 @@ import FacebookIcon from "../assets/svgs/facebook.svg";
 import { TwitterShareButton } from "./shared/twitter-share-button";
 import { FacebookShareButton } from "./shared/facebook-share-button";
 import { parsePublishedDateFromPath } from "../utils/misc";
+import { tweakImgUrl } from "../utils/misc";
 
 import tw from "twin.macro";
 import { css } from "@emotion/css";
@@ -259,28 +260,17 @@ const Tag = ({ text }) => {
           ml-hgap-xs
           font-futura
           rounded-sm rounded-l-none
-          no-underline
-          border-b border-black
         `)}
       >
-        #<span className="mx-[2px]">{text}</span>
+        <span className="zudo-hash">#</span>
+        {text}
       </a>
     </li>
   );
 };
 
 const HeroImg = ({ src }) => {
-  const srcWoQuery = src.replace(/\?.*/, "");
-  const srcNarrow = new URL(srcWoQuery);
-  const srcWide = new URL(srcWoQuery);
-  srcNarrow.searchParams.append("auto", "compress,format");
-  srcNarrow.searchParams.append("fit", "clip");
-  srcNarrow.searchParams.append("w", "800");
-  srcNarrow.searchParams.append("h", "800");
-  srcWide.searchParams.append("auto", "compress,format");
-  srcWide.searchParams.append("fit", "crop");
-  srcWide.searchParams.append("w", "2400");
-  srcWide.searchParams.append("h", "800");
+  const { srcNarrow, srcWide } = tweakImgUrl(src);
   return (
     <div
       className={ctl(`
@@ -412,18 +402,6 @@ const ShareBarRightTop = ({ pageUrl, title }) => {
   );
 };
 
-const ArticleBody = ({ html }) => {
-  return <div className={styledClassNames.article}>{html}</div>;
-};
-
-const ArticleTitle = ({ title }) => {
-  return (
-    <header>
-      <h1 className="font-bold text-xl sm:text-xl md:text-2xl">{title}</h1>
-    </header>
-  );
-};
-
 const ArticlePageLayout = ({
   title,
   path,
@@ -450,9 +428,11 @@ const ArticlePageLayout = ({
       >
         <div className="md:col-start-2">
           <ArticleDate path={path} />
-          <div className="pt-vgap-xs">
-            <ArticleTitle title={title} />
-          </div>
+          <header className="pt-vgap-xs">
+            <h1 className="font-bold text-xl sm:text-xl md:text-2xl">
+              {title}
+            </h1>
+          </header>
         </div>
 
         <div
@@ -485,7 +465,7 @@ const ArticlePageLayout = ({
           <div className="pt-vgap-sm md:hidden pb-vgap-sm md:pb-[0px]">
             <ShareBarRightTop pageUrl={pageUrl} title={title} />
           </div>
-          <ArticleBody html={articleHtml} />
+          <div className={styledClassNames.article}>{articleHtml}</div>
         </div>
       </div>
     </>
