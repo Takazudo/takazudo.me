@@ -63,6 +63,7 @@ module.exports = {
         path: `${__dirname}/src/mdx`,
       },
     },
+    "gatsby-plugin-image",
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
