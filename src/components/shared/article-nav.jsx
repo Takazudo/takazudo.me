@@ -15,7 +15,7 @@ const Article = ({ slug, title, imgUrl, excerpt }) => {
       className={ctl(`
         block
         no-underline hover:underline focus:underline
-        border-t border-h
+        border-t border-black
         py-vgap-md border-dashed
         md:pt-0 md:border-t-0
       `)}

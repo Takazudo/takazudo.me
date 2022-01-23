@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import ctl from "@netlify/classnames-template-literals";
+import { Link } from "../components/shared/link";
 import { PageTitle } from "../components/shared/page-title";
 import { parsePublishedDateFromPath } from "../utils/misc";
 
@@ -90,7 +91,7 @@ const ListItem = ({ slug, title }) => {
           pt-vgap-xs sm:pt-vgap-sm
         `)}
       >
-        <a href={slug}>{title}</a>
+        <Link to={slug}>{title}</Link>
       </dd>
     </div>
   );
