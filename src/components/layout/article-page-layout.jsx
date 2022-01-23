@@ -1,14 +1,12 @@
 import * as React from "react";
-import ctl from "@netlify/classnames-template-literals";
-import TwitterIcon from "../assets/svgs/twitter.svg";
-import FacebookIcon from "../assets/svgs/facebook.svg";
-import { TwitterShareButton } from "./shared/twitter-share-button";
-import { FacebookShareButton } from "./shared/facebook-share-button";
-import { parsePublishedDateFromPath } from "../utils/misc";
-import { tweakImgUrl } from "../utils/misc";
-
 import tw from "twin.macro";
 import { css } from "@emotion/css";
+import ctl from "@netlify/classnames-template-literals";
+import TwitterIcon from "../../assets/svgs/twitter.svg";
+import FacebookIcon from "../../assets/svgs/facebook.svg";
+import { TwitterShareButton } from "../shared/twitter-share-button";
+import { FacebookShareButton } from "../shared/facebook-share-button";
+import { parsePublishedDateFromPath, tweakImgUrl } from "../../utils/misc";
 
 const styledClassNames = {
   article: css`
