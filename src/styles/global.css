@@ -9,9 +9,15 @@
   a {
     @apply underline;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    :focus {
+      transition: outline-offset 0.25s ease;
+      outline-offset: 5px;
+    }
+  }
 }
 @layer utilities {
   .zudo-hash {
-    letter-spacing: .15em;
+    letter-spacing: 0.15em;
   }
 }
