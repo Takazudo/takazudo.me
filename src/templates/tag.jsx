@@ -11,6 +11,9 @@ export const query = graphql`
         node {
           id
           slug
+          fields {
+            blurHash
+          }
           frontmatter {
             title
             heroImgUrl
@@ -63,12 +66,14 @@ const Page = ({ pageContext, data, location }) => {
     const {
       slug,
       id,
+      fields: { blurHash },
       frontmatter: { title, heroImgUrl: imgUrl, excerpt },
     } = node;
     return {
       slug,
       title,
       imgUrl,
+      blurHash,
       excerpt,
       id,
     };

@@ -8,6 +8,7 @@ import { TwitterShareButton } from "../shared/twitter-share-button";
 import { FacebookShareButton } from "../shared/facebook-share-button";
 import { parsePublishedDateFromPath } from "../../utils/misc";
 import { ImgixGatsbyImage } from "@imgix/gatsby";
+import { Blurhash } from "react-blurhash";
 
 const styledClassNames = {
   article: css`
@@ -268,7 +269,7 @@ const Tag = ({ text }) => {
   );
 };
 
-const HeroImg = ({ src }) => {
+const HeroImg = ({ src, blurHash }) => {
   return (
     <div
       className={ctl(`
@@ -280,7 +281,10 @@ const HeroImg = ({ src }) => {
       `)}
     >
       {/* wide image */}
-      <div className="hidden md:block">
+      <div className="hidden md:block relative overflow-hidden">
+        <div className="zudo-absolute-center">
+          <Blurhash hash={blurHash} width={1280} height={427} />
+        </div>
         <ImgixGatsbyImage
           src={src}
           imgixParams={{
@@ -288,16 +292,20 @@ const HeroImg = ({ src }) => {
             fit: "crop",
             ar: "3:1",
           }}
+          breakpoints={[580, 820, 1240]}
           layout="constrained"
-          className="w-full"
-          width="1200"
-          height="400"
+          className="w-full relative z-10"
+          width="1800"
+          height="600"
           aspectRatio={3 / 1}
           alt=""
         />
       </div>
       {/* narrow image */}
-      <div className="block md:hidden">
+      <div className="block md:hidden relative overflow-hidden">
+        <div className="zudo-absolute-center">
+          <Blurhash hash={blurHash} width={900} height={600} />
+        </div>
         <ImgixGatsbyImage
           src={src}
           imgixParams={{
@@ -305,8 +313,9 @@ const HeroImg = ({ src }) => {
             fit: "crop",
             ar: "3:2",
           }}
+          breakpoints={[440]}
           layout="constrained"
-          className="w-full"
+          className="w-full relative z-10"
           width="300"
           height="200"
           aspectRatio={3 / 2}
@@ -436,10 +445,11 @@ const ArticlePageLayout = ({
   tags,
   articleHtml,
   pageUrl,
+  blurHash,
 }) => {
   return (
     <>
-      <HeroImg src={heroImgUrl} />
+      <HeroImg src={heroImgUrl} blurHash={blurHash} />
       <div
         className={ctl(`
             md:grid 

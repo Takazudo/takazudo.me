@@ -3,8 +3,9 @@ import ctl from "@netlify/classnames-template-literals";
 import { Link } from "../shared/link";
 import { parsePublishedDateFromPath } from "../../utils/misc";
 import { ImgixGatsbyImage } from "@imgix/gatsby";
+import { Blurhash } from "react-blurhash";
 
-const Article = ({ slug, title, imgUrl, excerpt }) => {
+const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
   const { formattedDateString } = parsePublishedDateFromPath(slug);
   if (!/^\//.test(slug)) {
     slug = `/${slug}`;
@@ -29,24 +30,31 @@ const Article = ({ slug, title, imgUrl, excerpt }) => {
       `)}
       >
         <div className="row-span-2 sm:row-span-3">
-          <ImgixGatsbyImage
-            src={imgUrl}
-            imgixParams={{
-              auto: ["format", "compress"],
-              fit: "crop",
-              ar: "5:4",
-            }}
-            layout="constrained"
-            width="250"
-            height="200"
+          <div
             className={ctl(`
-              w-full bg-black
+              bg-black
               border-y-5 border-black
               md:border-y-10
+              relative overflow-hidden
             `)}
-            aspectRatio={5/4}
-            alt=""
-          />
+          >
+            <div className="zudo-absolute-center">
+              <Blurhash hash={blurHash} width={250} height={200} />
+            </div>
+            <ImgixGatsbyImage
+              src={imgUrl}
+              imgixParams={{
+                auto: ["format", "compress"],
+                fit: "crop",
+                ar: "5:4",
+              }}
+              breakpoints={[360]}
+              layout="fullWidth"
+              className="w-full relative z-10"
+              aspectRatio={5 / 4}
+              alt=""
+            />
+          </div>
         </div>
         <p
           className={ctl(`
@@ -99,6 +107,7 @@ const ArticleNav = ({ items }) => {
               title={item.title}
               imgUrl={item.imgUrl}
               excerpt={item.excerpt}
+              blurHash={item.blurHash}
               key={item.id}
             />
           );

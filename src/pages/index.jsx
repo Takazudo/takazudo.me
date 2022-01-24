@@ -14,6 +14,9 @@ export const query = graphql`
         node {
           id
           slug
+          fields {
+            blurHash
+          }
           frontmatter {
             title
             heroImgUrl
@@ -30,12 +33,14 @@ const tweakRawDataForView = (rawData) => {
     const {
       slug,
       id,
+      fields: { blurHash },
       frontmatter: { title, heroImgUrl: imgUrl, excerpt },
     } = node;
     return {
       slug,
       title,
       imgUrl,
+      blurHash,
       excerpt,
       id,
     };
@@ -77,6 +82,7 @@ const IndexPage = ({ data }) => {
   //console.log(items);
   items = pickLatestArticles(items);
   items.length = 10;
+  //console.log(items)
   return (
     <>
       <PageTitle tagName="p">

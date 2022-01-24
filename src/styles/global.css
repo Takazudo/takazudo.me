@@ -17,6 +17,12 @@
   }
 }
 @layer utilities {
+  .zudo-absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   .zudo-hash {
     letter-spacing: 0.15em;
   }

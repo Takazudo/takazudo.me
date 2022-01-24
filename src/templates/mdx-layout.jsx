@@ -49,6 +49,7 @@ const components = {
 
 const Layout = (props) => {
   const { pageContext, children } = props;
+  const { blurHash } = pageContext;
   const { title, description, heroImgUrl, tags } = pageContext.frontmatter;
   const { siteUrl } = useSiteMetadata();
   //console.dir(props, { depth: null });
@@ -68,6 +69,7 @@ const Layout = (props) => {
         heroImgUrl={heroImgUrl}
         tags={tags}
         articleHtml={children}
+        blurHash={blurHash}
         pageUrl={`${siteUrl}${props.location.pathname}`}
       />
     </MDXProvider>
