@@ -48,7 +48,7 @@ module.exports = {
       10: "10px",
     },
     fontFamily: {
-      futura: ["Futura", "Ubuntu", "sans-serif"],
+      futura: ["Futura", "Century Gothic", "sans-serif"],
       mono: [
         "Menlo",
         "Monaco",
