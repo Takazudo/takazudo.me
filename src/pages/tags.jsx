@@ -28,7 +28,6 @@ const collectTags = (data) => {
       tags.push(tag);
     });
   });
-  console.log(tags);
   return Array.from(new Set(tags));
 };
 
@@ -66,7 +65,7 @@ const TagListPage = ({ data, location }) => {
         `)}
       >
         {tags.map((tag) => {
-          if (tag === "internal") return;
+          if (tag === "internal") return <></>;
           return (
             <div key={tag}>
               <Link to={`/tags/${tag}`} className="zudo-invert-color-link">

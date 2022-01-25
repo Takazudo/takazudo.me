@@ -124,7 +124,6 @@ module.exports = {
             `,
             output: "/rss.xml",
             title: "takazudo.me",
-            link: "https://takazudo.me",
           },
         ],
       },

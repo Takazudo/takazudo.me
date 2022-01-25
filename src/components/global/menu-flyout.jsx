@@ -142,7 +142,10 @@ const MenuFlyout = ({ className, items = [] }) => {
       <Menu>
         {({ open }) => (
           <>
-            <Menu.Button className="fixed z-50 right-0 top-0">
+            <Menu.Button
+              className="fixed z-50 right-0 top-0"
+              aria-label="メニューを開閉します"
+            >
               <MenuButtonInner open={open} />
             </Menu.Button>
             <ItemsWrapper open={open}>
