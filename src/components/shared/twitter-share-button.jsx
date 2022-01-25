@@ -17,7 +17,7 @@ const TwitterShareButton = ({ children, pageUrl, title }) => {
         focus:text-[#1DA1F2]
         active:text-[#1DA1F2]
       `)}
-      href={`https://twitter.com/intent/tweet?text=${titleInHref}&url=${pageUrl}`}
+      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(titleInHref)}&url=${encodeURIComponent(pageUrl)}`}
       target="_blank"
       rel="noreferrer"
     >
