@@ -1,4 +1,5 @@
 import * as React from "react";
+import ctl from "@netlify/classnames-template-literals";
 
 const FacebookShareButton = ({ children, pageUrl }) => {
   const share = () => {
@@ -9,7 +10,15 @@ const FacebookShareButton = ({ children, pageUrl }) => {
     });
   };
   return (
-    <button className="facebook-share-button block" onClick={share}>
+    <button
+      className={ctl(`
+        facebook-share-button block
+        hover:text-[#4267B2]
+        focus:text-[#4267B2]
+        active:text-[#4267B2]
+      `)}
+      onClick={share}
+    >
       {children}
     </button>
   );
