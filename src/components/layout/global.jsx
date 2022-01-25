@@ -6,7 +6,7 @@ const GlobalLayout = ({ children }) => {
   return (
     <>
       <Header />
-      {children}
+      <div className="min-h-[300px]">{children}</div>
       <Footer />
     </>
   );
