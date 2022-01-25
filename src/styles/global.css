@@ -27,11 +27,20 @@
     letter-spacing: 0.15em;
   }
   .zudo-invert-color-link {
-    @apply text-shadow-md
+    @apply text-shadow-md;
   }
   .zudo-invert-color-link:hover,
   .zudo-invert-color-link:active,
   .zudo-invert-color-link:focus {
-    @apply text-white bg-black text-shadow-none no-underline
+    @apply text-white bg-black text-shadow-none no-underline;
+  }
+
+  .zudo-invert-color-link-inline {
+    @apply text-shadow-md;
+  }
+  .zudo-invert-color-link-inline:hover,
+  .zudo-invert-color-link-inline:active,
+  .zudo-invert-color-link-inline:focus {
+    @apply text-white bg-black text-shadow-none no-underline;
   }
 }
