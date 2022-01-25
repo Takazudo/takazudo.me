@@ -39,14 +39,14 @@ const TagListPage = ({ data, location }) => {
       />
       <h1
         className={ctl(`
-            border-black 
-            border-t-5 md:border-t-[10px]
-            max-w-[1280px] mx-auto px-hgap-sm
-            pt-vgap-md sm:pt-vgap-lg
-            sm:pb-vgap-md
-            font-futura text-xl sm:text-2xl
-            text-center
-          `)}
+          border-black 
+          border-t-5 md:border-t-[10px]
+          max-w-[1280px] mx-auto px-hgap-sm
+          pt-vgap-md sm:pt-vgap-lg
+          sm:pb-vgap-md
+          font-futura text-xl sm:text-2xl
+          text-center
+        `)}
       >
         Tags
       </h1>
@@ -63,7 +63,7 @@ const TagListPage = ({ data, location }) => {
         {tags.map((tag) => {
           return (
             <div key={tag}>
-              <Link to={`/tags/${tag}`}>
+              <Link to={`/tags/${tag}`} className="zudo-invert-color-link">
                 <span className="zudo-hash">#</span>
                 {tag}
               </Link>

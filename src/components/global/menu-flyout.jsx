@@ -159,9 +159,10 @@ const MenuFlyout = ({ className, items = [] }) => {
                         to={item.href}
                         className={ctl(`
                           block relative z-50
-                          text-black px-hgap-xs rounded-md
+                          px-hgap-xs rounded-md
                           text-center
                           text-2xl
+                          zudo-invert-color-link
                           ${active && "outline outline-2 outline-blue-700"}
                         `)}
                       >

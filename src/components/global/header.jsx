@@ -20,7 +20,7 @@ const Header = ({ logoTagName = "div" }) => {
             text-lg md:text-xl lg:text-2xl
           `)}
         >
-          <Link to="/" className="no-underline">
+          <Link to="/" className="zudo-invert-color-link no-underline">
             takazudo.me
           </Link>
         </LogoTag>
@@ -32,7 +32,9 @@ const Header = ({ logoTagName = "div" }) => {
             {globalNav.map((item) => {
               return (
                 <li key={item.href}>
-                  <Link to={item.href}>{item.text}</Link>
+                  <Link to={item.href} className="zudo-invert-color-link">
+                    {item.text}
+                  </Link>
                 </li>
               );
             })}

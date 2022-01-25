@@ -1,5 +1,5 @@
 import * as React from "react";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
 import { css } from "@emotion/css";
 import ctl from "@netlify/classnames-template-literals";
 import TwitterIcon from "../../assets/svgs/twitter.svg";
@@ -14,9 +14,15 @@ import { Blurhash } from "react-blurhash";
 const styledClassNames = {
   article: css`
     a {
-      ${tw`text-blue-600 font-bold px-[3px]`}
+      color: ${theme`colors.zudo-link`};
+      ${tw`font-bold px-[3px] text-[1.1em]`}
       &:visited {
         ${tw`text-purple-800`}
+      }
+      &:hover,
+      &:focus,
+      &:active {
+        ${tw`text-white bg-black text-shadow-none no-underline`}
       }
     }
     em {
@@ -260,6 +266,7 @@ const Tag = ({ text }) => {
           inline-block
           ml-hgap-xs
           font-futura
+          text-shadow-md
           rounded-sm rounded-l-none
         `)}
       >
@@ -317,8 +324,8 @@ const HeroImg = ({ src, blurHash }) => {
           breakpoints={[440]}
           layout="constrained"
           className="w-full relative z-10"
-          width="300"
-          height="200"
+          width="600"
+          height="400"
           aspectRatio={3 / 2}
           alt=""
         />
@@ -467,7 +474,7 @@ const ArticlePageLayout = ({
         <div className="md:col-start-2">
           <ArticleDate path={path} />
           <header className="pt-vgap-xs">
-            <h1 className="font-bold text-xl sm:text-xl md:text-2xl">
+            <h1 className="font-bold text-xl sm:text-xl md:text-2xl text-shadow-md">
               {title}
             </h1>
           </header>

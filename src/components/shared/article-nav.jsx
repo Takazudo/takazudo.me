@@ -5,6 +5,17 @@ import { parsePublishedDateFromPath } from "../../utils/misc";
 import { ImgixGatsbyImage } from "@imgix/gatsby";
 import { Blurhash } from "react-blurhash";
 
+const styledClassNames = {
+  insideLink: ctl(`
+    group-hover:text-white
+    group-hover:bg-black
+    group-hover:text-shadow-none
+    group-focus:text-white
+    group-focus:bg-black
+    group-focus:text-shadow-none
+  `),
+};
+
 const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
   const { formattedDateString } = parsePublishedDateFromPath(slug);
   if (!/^\//.test(slug)) {
@@ -14,6 +25,7 @@ const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
     <Link
       to={slug}
       className={ctl(`
+        group
         block
         no-underline hover:underline focus:underline
         border-t border-black
@@ -64,10 +76,16 @@ const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
             tracking-wider
           `)}
         >
-          {formattedDateString}
+          <span className={styledClassNames.insideLink}>{formattedDateString}</span>
         </p>
-        <h2 className="col-span-2 text-lg underline pt-vgap-xs line-clamp-3 font-bold">
-          {title}
+        <h2
+          className={ctl(`
+            col-span-2 text-lg
+            underline pt-vgap-xs line-clamp-3
+            font-bold text-shadow-md
+          `)}
+        >
+          <span className={styledClassNames.insideLink}>{title}</span>
         </h2>
         <p
           className={ctl(`
@@ -77,7 +95,7 @@ const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
             pt-vgap-sm 
           `)}
         >
-          {excerpt}
+          <span className={styledClassNames.insideLink}>{excerpt}</span>
         </p>
       </div>
     </Link>

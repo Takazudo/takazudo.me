@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 const lengthCollection = {
   0: 0,
   "1px": 1,
@@ -72,8 +74,34 @@ module.exports = {
       relaxed: "1",
       loose: "2.3",
     },
-    extend: {},
+    extend: {
+      colors: {
+        "zudo-link": "#d97706",
+      },
+    },
   },
 
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".clearfix": {
+          "::after": {
+            content: "",
+            clear: "both",
+            display: "table",
+          },
+        },
+        ".text-shadow-md": {
+          "text-shadow":
+            "0.05em 0.05em 0 #ccc",
+        },
+        ".text-shadow-none": {
+          "text-shadow":
+            "none",
+        },
+      };
+      addUtilities(newUtilities);
+    }),
+  ],
 };

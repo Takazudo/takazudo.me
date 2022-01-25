@@ -91,7 +91,7 @@ const ListItem = ({ slug, title }) => {
           pt-vgap-xs sm:pt-vgap-sm
         `)}
       >
-        <Link to={slug}>{title}</Link>
+        <Link to={slug} className="zudo-invert-color-link">{title}</Link>
       </dd>
     </div>
   );

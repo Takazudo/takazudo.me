@@ -87,7 +87,7 @@ const IndexPage = ({ data }) => {
     <>
       <PageTitle tagName="p">
         Notes by{" "}
-        <a href="https://twitter.com/Takazudo" rel="noreferrer">
+        <a href="https://twitter.com/Takazudo" rel="noreferrer" className="zudo-invert-color-link">
           @Takazudo
         </a>
       </PageTitle>
@@ -99,7 +99,7 @@ const IndexPage = ({ data }) => {
         `)}
       >
         <li>
-          <Link to="/list">
+          <Link to="/list" className="zudo-invert-color-link">
             Older Notes
             <ArrowRight
               className={ctl(`
