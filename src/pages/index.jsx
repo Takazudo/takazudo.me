@@ -4,6 +4,7 @@ import ctl from "@netlify/classnames-template-literals";
 import { PageTitle } from "../components/shared/page-title";
 import { ArticleNav } from "../components/shared/article-nav";
 import { Link } from "../components/shared/link";
+import { HeadMeta } from "../components/global/head-meta";
 import { parsePublishedDateFromPath } from "../utils/misc";
 import ArrowRight from "../assets/svgs/arrow-right.svg";
 
@@ -85,9 +86,14 @@ const IndexPage = ({ data }) => {
   //console.log(items)
   return (
     <>
+      <HeadMeta path="/" />
       <PageTitle tagName="p">
         Notes by{" "}
-        <a href="https://twitter.com/Takazudo" rel="noreferrer" className="zudo-invert-color-link">
+        <a
+          href="https://twitter.com/Takazudo"
+          rel="noreferrer"
+          className="zudo-invert-color-link"
+        >
           @Takazudo
         </a>
       </PageTitle>

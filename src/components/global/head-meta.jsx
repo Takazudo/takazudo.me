@@ -6,7 +6,14 @@ const format = (template, title) => {
   return template.replace(/%s/g, title);
 };
 
-const HeadMeta = ({ pageTitle, pageDescription, pageImgUrl, isArticle, path }) => {
+const HeadMeta = ({
+  pageTitle,
+  pageDescription,
+  pageImgUrl,
+  isArticle,
+  path,
+}) => {
+  const isIndexPage = path === "/";
   const {
     title: siteTitle,
     titleTemplate,
@@ -23,6 +30,11 @@ const HeadMeta = ({ pageTitle, pageDescription, pageImgUrl, isArticle, path }) =
     url: `${siteUrl}${path}`,
   };
 
+  if (isIndexPage) {
+    meta.titleTemplate = "%s";
+    meta.url = siteUrl;
+  }
+
   return (
     <Helmet title={meta.title} titleTemplate={meta.titleTemplate}>
       {meta.url && <meta property="og:url" content={meta.url} />}
@@ -37,6 +49,7 @@ const HeadMeta = ({ pageTitle, pageDescription, pageImgUrl, isArticle, path }) =
         <meta property="og:description" content={meta.description} />
       )}
       {meta.imgUrl && <meta property="og:image" content={meta.imgUrl} />}
+      <link rel="canonical" href={meta.url} />
     </Helmet>
   );
 };
