@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const facebookSdkOptions = {
-  appId: "MY-APP-ID",
+  appId: process.env.GATSBY_FACEBOOK_APP_ID,
   autoLogAppEvents: true,
   xfbml: true,
   version: "v12.0",
