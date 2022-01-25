@@ -6,6 +6,7 @@ import TwitterIcon from "../../assets/svgs/twitter.svg";
 import FacebookIcon from "../../assets/svgs/facebook.svg";
 import { TwitterShareButton } from "../shared/twitter-share-button";
 import { FacebookShareButton } from "../shared/facebook-share-button";
+import { Link } from "../shared/link";
 import { parsePublishedDateFromPath } from "../../utils/misc";
 import { ImgixGatsbyImage } from "@imgix/gatsby";
 import { Blurhash } from "react-blurhash";
@@ -253,8 +254,8 @@ const styledClassNames = {
 const Tag = ({ text }) => {
   return (
     <li className="pt-vgap-xs">
-      <a
-        href={`/tags/${text}`}
+      <Link
+        to={`/tags/${text}`}
         className={ctl(`
           inline-block
           ml-hgap-xs
@@ -264,7 +265,7 @@ const Tag = ({ text }) => {
       >
         <span className="zudo-hash">#</span>
         {text}
-      </a>
+      </Link>
     </li>
   );
 };
