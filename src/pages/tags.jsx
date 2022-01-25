@@ -17,13 +17,18 @@ export const query = graphql`
 `;
 
 const collectTags = (data) => {
-  let tags = [];
+  const tags = [];
   data.allMdx.nodes.forEach((node) => {
-    if (!node.frontmatter.tags || node.frontmatter.tags.length === 0) {
+    const currentTags = node.frontmatter.tags;
+    if (!currentTags || currentTags.length === 0) {
       return;
     }
-    tags = tags.concat(node.frontmatter.tags);
+    currentTags.forEach((tag) => {
+      if (tag === "internal") return;
+      tags.push(tag);
+    });
   });
+  console.log(tags);
   return Array.from(new Set(tags));
 };
 
@@ -61,6 +66,7 @@ const TagListPage = ({ data, location }) => {
         `)}
       >
         {tags.map((tag) => {
+          if (tag === "internal") return;
           return (
             <div key={tag}>
               <Link to={`/tags/${tag}`} className="zudo-invert-color-link">

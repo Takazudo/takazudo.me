@@ -17,7 +17,10 @@ const styledClassNames = {
 };
 
 const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
-  const { formattedDateString } = parsePublishedDateFromPath(slug);
+  const parsedDate = parsePublishedDateFromPath(slug);
+  const formattedDateString = parsedDate
+    ? parsedDate.formattedDateString
+    : null;
   if (!/^\//.test(slug)) {
     slug = `/${slug}`;
   }
@@ -76,7 +79,9 @@ const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
             tracking-wider
           `)}
         >
-          <span className={styledClassNames.insideLink}>{formattedDateString}</span>
+          <span className={styledClassNames.insideLink}>
+            {formattedDateString}
+          </span>
         </p>
         <h2
           className={ctl(`
