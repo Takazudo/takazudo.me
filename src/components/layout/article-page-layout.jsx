@@ -13,6 +13,7 @@ import { Blurhash } from "react-blurhash";
 
 const styledClassNames = {
   article: css`
+    min-height: 200px;
     a {
       color: ${theme`colors.zudo-link`};
       ${tw`font-bold px-[3px] text-[1.1em]`}
