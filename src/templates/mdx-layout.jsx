@@ -7,6 +7,7 @@ import { Body } from "../components/article/body";
 import { Outro } from "../components/article/outro";
 import { UrlReference } from "../components/article/url-reference";
 import { Youtube } from "../components/article/youtube";
+import { Link } from "../components/shared/link";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
 
 const H2 = ({ id, children }) => {
@@ -37,9 +38,14 @@ const H3 = ({ id, children }) => {
   );
 };
 
+const A = ({ href, children }) => {
+  return <Link to={href}>{children}</Link>;
+};
+
 const components = {
   h2: H2,
   h3: H3,
+  a: A,
   Intro,
   Body,
   Outro,
