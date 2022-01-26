@@ -337,7 +337,7 @@ const HeroImg = ({ src, blurHash }) => {
 
 const ShareBarVertical = ({ pageUrl, title }) => {
   return (
-    <div>
+    <div className="sticky top-vgap-sm">
       <dl className="flex flex-col text-center mr-auto">
         <dt className="pb-hgap-sm nowrap text-sm font-futura">Share</dt>
         <dd className="pb-hgap-sm flex items-center flex-col">
