@@ -4,7 +4,7 @@ require("dotenv").config({
   path: `.env.${activeEnv}`,
 });
 
-const { convertToRssData } = require("./src/utils/rss-util");
+const { convertToRssData } = require("./src/utils/rss");
 
 module.exports = {
   siteMetadata: {
