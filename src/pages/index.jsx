@@ -21,7 +21,7 @@ export const query = graphql`
           frontmatter {
             title
             heroImgUrl
-            excerpt
+            customExcerpt
           }
         }
       }
@@ -34,15 +34,16 @@ const tweakRawDataForView = (rawData) => {
     const {
       slug,
       id,
+      excerpt,
       fields: { blurHash },
-      frontmatter: { title, heroImgUrl: imgUrl, excerpt },
+      frontmatter: { title, heroImgUrl: imgUrl, customExcerpt },
     } = node;
     return {
       slug,
       title,
       imgUrl,
       blurHash,
-      excerpt,
+      excerpt: customExcerpt || excerpt,
       id,
     };
   });

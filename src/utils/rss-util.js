@@ -8,7 +8,8 @@ const tweakRawDataForRss = (site, allMdx) => {
     const {
       slug,
       html,
-      frontmatter: { title, excerpt },
+      excerpt,
+      frontmatter: { title, customExcerpt },
     } = node;
     const parsedDate = pickDateFromPath(slug);
 
@@ -19,7 +20,7 @@ const tweakRawDataForRss = (site, allMdx) => {
 
     items.push({
       title,
-      description: excerpt,
+      description: customExcerpt || excerpt,
       date: parsedDate.standardDateString,
       url: `${site.siteMetadata.siteUrl}/${slug}`,
       guid: `${site.siteMetadata.siteUrl}/${slug}`,

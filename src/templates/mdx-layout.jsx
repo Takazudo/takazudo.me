@@ -53,30 +53,36 @@ const components = {
   Youtube,
 };
 
-const Layout = (props) => {
-  const { pageContext, children } = props;
-  const { blurHash } = pageContext;
-  const { title, description, heroImgUrl, tags } = pageContext.frontmatter;
+const Layout = ({ pageContext, children, location }) => {
+  const {
+    blurHash,
+    frontmatter: { title, description, heroImgUrl, tags, customExcerpt },
+  } = pageContext;
   const { siteUrl } = useSiteMetadata();
-  //console.dir(props, { depth: null });
+  //console.log(blurHash);
+  //console.log(title);
+  //console.log(description);
+  //console.log(heroImgUrl);
+  //console.log(tags);
+  //console.log(customExcerpt);
 
   return (
     <MDXProvider components={components}>
       <HeadMeta
         pageTitle={title}
-        pageDescription={description}
+        pageDescription={description || customExcerpt}
         pageImgUrl={heroImgUrl || null}
         isArticle={true}
-        path={props.location.pathname}
+        path={location.pathname}
       />
       <ArticlePageLayout
         title={title}
-        path={props.location.pathname}
+        path={location.pathname}
         heroImgUrl={heroImgUrl}
         tags={tags}
         articleHtml={children}
         blurHash={blurHash}
-        pageUrl={`${siteUrl}${props.location.pathname}`}
+        pageUrl={`${siteUrl}${location.pathname}`}
       />
     </MDXProvider>
   );

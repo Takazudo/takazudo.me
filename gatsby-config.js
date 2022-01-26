@@ -114,7 +114,7 @@ module.exports = {
                       slug
                       frontmatter {
                         title
-                        excerpt
+                        customExcerpt
                       }
                       html
                     }
