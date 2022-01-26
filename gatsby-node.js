@@ -30,7 +30,8 @@ exports.onCreatePage = async ({ page, actions }) => {
   const imgUrl = page.context.frontmatter.heroImgUrl;
   if (!imgUrl) return;
   const { createPage, deletePage } = actions;
-  deletePage(page);
+  const oldPage = Object.assign({}, page);
+  deletePage(oldPage);
   const blurHash = await getBlurHashUrl(imgUrl);
   createPage({
     ...page,
@@ -38,6 +39,7 @@ exports.onCreatePage = async ({ page, actions }) => {
       ...page.context,
       blurHash: blurHash,
     },
+    defer: true, // make DSG on
   });
 };
 
