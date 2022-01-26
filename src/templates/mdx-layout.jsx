@@ -2,6 +2,7 @@ import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { ArticlePageLayout } from "../components/layout/article-page-layout";
 import { HeadMeta } from "../components/global/head-meta";
+import { Img } from "../components/article/img";
 import { Intro } from "../components/article/intro";
 import { Body } from "../components/article/body";
 import { Outro } from "../components/article/outro";
@@ -46,6 +47,7 @@ const components = {
   h2: H2,
   h3: H3,
   a: A,
+  img: Img,
   Intro,
   Body,
   Outro,
