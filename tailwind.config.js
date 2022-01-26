@@ -1,35 +1,29 @@
 const plugin = require("tailwindcss/plugin");
+const { createTailwindSpacingConfig } = require("./src/utils/css");
 
-const lengthCollection = {
+// prepare spacing values for Tailwind
+const spacingConfig = createTailwindSpacingConfig({
   0: 0,
   "1px": 1,
-
   "hgap-2xs": 5,
   "hgap-xs": 12,
   "hgap-sm": 20,
   "hgap-md": 40,
   "hgap-lg": 60,
   "hgap-xl": 100,
-
   "vgap-2xs": 4,
   "vgap-xs": 7,
   "vgap-sm": 15,
   "vgap-md": 30,
   "vgap-lg": 45,
   "vgap-xl": 60,
-};
-
-const lengthCollectionPx = {};
-Object.keys(lengthCollection).map((key) => {
-  lengthCollectionPx[key] = `${lengthCollection[key]}px`;
 });
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,mdx}", "./*.js"],
 
   theme: {
-    spacing: {
-      ...lengthCollectionPx,
-    },
+    spacing: spacingConfig,
     screens: {
       sm: "580px",
       md: "820px",
@@ -93,12 +87,10 @@ module.exports = {
           },
         },
         ".text-shadow-md": {
-          "text-shadow":
-            "0.05em 0.05em 0 #ccc",
+          "text-shadow": "0.05em 0.05em 0 #ccc",
         },
         ".text-shadow-none": {
-          "text-shadow":
-            "none",
+          "text-shadow": "none",
         },
       };
       addUtilities(newUtilities);
