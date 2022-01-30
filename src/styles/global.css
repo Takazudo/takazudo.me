@@ -9,10 +9,16 @@
   a {
     @apply underline;
   }
+  a:focus, a:active {
+    @apply outline outline-4 outline-orange-600 rounded-sm;
+  }
+  a:active {
+    @apply bg-orange-900/20 ;
+  }
   @media (prefers-reduced-motion: no-preference) {
     :focus {
       transition: outline-offset 0.25s ease;
-      outline-offset: 5px;
+      outline-offset: 6px;
     }
   }
 }
@@ -30,9 +36,11 @@
     @apply text-shadow-md;
   }
   .zudo-invert-color-link:hover,
-  .zudo-invert-color-link:active,
   .zudo-invert-color-link:focus {
     @apply text-white bg-black text-shadow-none no-underline;
+  }
+  .zudo-invert-color-link:active {
+    @apply text-white bg-orange-900/75;
   }
 
   .zudo-invert-color-link-inline {

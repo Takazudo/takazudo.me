@@ -18,7 +18,7 @@ const styledClassNames = {
       color: ${theme`colors.zudo-link`};
       ${tw`font-bold px-[3px] text-[1.1em]`}
       &:visited {
-        ${tw`text-purple-800`}
+        color: #713f12;
       }
       &:hover,
       &:focus,
@@ -93,7 +93,12 @@ const styledClassNames = {
           ${tw`block relative`}
           a,
           a:visited {
-            ${tw`absolute left-[-1em] top-[-0.05em] font-bold hidden no-underline text-black`}
+            ${tw`absolute left-[-1em] font-bold hidden no-underline text-black`}
+            ${tw`top-[0.3em] md:top-[-0.05em]`}
+            ${tw`text-sm md:text-lg`}
+          }
+          a:hover {
+            ${tw`text-white`}
           }
         }
       }
@@ -269,6 +274,7 @@ const Tag = ({ text }) => {
           font-futura
           text-shadow-md
           rounded-sm rounded-l-none
+          zudo-invert-color-link
         `)}
       >
         <span className="zudo-hash">#</span>
