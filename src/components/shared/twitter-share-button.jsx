@@ -6,9 +6,15 @@ const format = (template, title) => {
   return template.replace(/%s/g, title);
 };
 
+// Twitter makes the preview of the tweet form takazudo.me toppage.
+// replacing 'takazudo.me' to 'takazudo-me' to avoid this.
+const tweakTitle = (title) => {
+  return title.replace(/([^/])takazudo.me/, "$1takauzudo-me");
+};
+
 const TwitterShareButton = ({ children, pageUrl, title }) => {
   const { titleTemplate } = useSiteMetadata();
-  const titleInHref = format(titleTemplate, title);
+  const titleInHref = tweakTitle(format(titleTemplate, title));
   return (
     <a
       className={ctl(`
@@ -17,7 +23,9 @@ const TwitterShareButton = ({ children, pageUrl, title }) => {
         focus:text-[#1DA1F2]
         active:text-[#1DA1F2]
       `)}
-      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(titleInHref)}&url=${encodeURIComponent(pageUrl)}`}
+      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        titleInHref
+      )}&url=${encodeURIComponent(pageUrl)}`}
       target="_blank"
       rel="noreferrer"
     >
