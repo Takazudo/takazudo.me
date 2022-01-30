@@ -145,8 +145,8 @@ const MenuFlyout = ({ className, items = [] }) => {
             <Menu.Button
               className={ctl(`
                 fixed z-50 right-[8px] top-[9px]
-                outline-orange-600 rounded-sm
-                focus:ring-4
+                outline-none
+                focus:ring-4 ring-orange-600 rounded-sm
               `)}
               aria-label="メニューを開閉します"
             >
