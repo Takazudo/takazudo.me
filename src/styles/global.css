@@ -7,18 +7,18 @@
     @apply text-base;
   }
   a {
-    @apply underline;
+    @apply underline outline-none;
   }
-  a:focus, a:active {
-    @apply outline outline-4 outline-orange-600 rounded-sm;
+  a:focus,
+  a:active {
+    @apply ring-4 ring-orange-600 rounded-sm;
   }
   a:active {
-    @apply bg-orange-900/20 ;
+    @apply bg-orange-900/20;
   }
   @media (prefers-reduced-motion: no-preference) {
     :focus {
-      transition: outline-offset 0.25s ease;
-      outline-offset: 6px;
+      transition: box-shadow 0.25s ease;
     }
   }
 }
@@ -36,8 +36,10 @@
     @apply text-shadow-md;
   }
   .zudo-invert-color-link:hover,
-  .zudo-invert-color-link:focus {
+  .zudo-invert-color-link:focus,
+  .zudo-invert-color-link--focus {
     @apply text-white bg-black text-shadow-none no-underline;
+    @apply ring-4 rounded-sm ring-orange-600;
   }
   .zudo-invert-color-link:active {
     @apply text-white bg-orange-900/75;

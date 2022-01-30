@@ -143,7 +143,11 @@ const MenuFlyout = ({ className, items = [] }) => {
         {({ open }) => (
           <>
             <Menu.Button
-              className="fixed z-50 right-0 top-0"
+              className={ctl(`
+                fixed z-50 right-[8px] top-[9px]
+                outline-orange-600 rounded-sm
+                focus:ring-4
+              `)}
               aria-label="メニューを開閉します"
             >
               <MenuButtonInner open={open} />
@@ -166,7 +170,7 @@ const MenuFlyout = ({ className, items = [] }) => {
                           text-center
                           text-2xl
                           zudo-invert-color-link
-                          ${active && "outline outline-2 outline-blue-700"}
+                          ${active && "zudo-invert-color-link--focus"}
                         `)}
                       >
                         {item.text}
