@@ -467,15 +467,16 @@ const ArticlePageLayout = ({
       <HeroImg src={heroImgUrl} blurHash={blurHash} />
       <div
         className={ctl(`
-            md:grid 
-            md:grid-cols-[80px_minmax(0,1fr)_180px]
-            lg:grid-cols-[100px_minmax(0,1fr)_220px]
-            md:gap-x-hgap-sm
-            md:gap-y-vgap-sm lg:gap-y-vgap-md
-            w-auto max-w-[1280px]
-            mt-hgap-sm sm:mt-hgap-md
-            mx-hgap-sm md:mx-auto
-            relative
+          md:grid 
+          md:grid-cols-[80px_minmax(0,1fr)_180px]
+          lg:grid-cols-[100px_minmax(0,1fr)_220px]
+          md:gap-x-hgap-sm
+          md:gap-y-vgap-sm lg:gap-y-vgap-md
+          w-auto max-w-[1280px]
+          mt-hgap-sm sm:mt-hgap-md
+          mx-hgap-sm md:mx-auto
+          pb-vgap-md md:pb-vgap-lg
+          relative
         `)}
       >
         <div className="md:col-start-2">
