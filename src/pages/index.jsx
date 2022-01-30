@@ -15,6 +15,7 @@ export const query = graphql`
         node {
           id
           slug
+          excerpt
           fields {
             blurHash
           }
