@@ -43,6 +43,7 @@ module.exports = {
     },
     fontFamily: {
       futura: ["Futura", "Century Gothic", "sans-serif"],
+      sans: ["Helvetica", "sans-serif"],
       mono: [
         "Menlo",
         "Monaco",
@@ -55,7 +56,7 @@ module.exports = {
     fontSize: {
       xs: ["0.875rem", { lineHeight: "1rem" }],
       sm: ["0.95rem", { lineHeight: "1.5" }],
-      base: ["1.1rem", { lineHeight: "1.7" }],
+      base: ["1.05rem", { lineHeight: "1.7" }],
       lg: ["1.3rem", { lineHeight: "1.5" }],
       xl: ["1.8rem", { lineHeight: "1.4" }],
       "2xl": ["2.4rem", { lineHeight: "1.4" }],

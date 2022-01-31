@@ -16,10 +16,12 @@ const H2 = ({ id, children }) => {
     <h2 id={id}>
       <span>
         <span>
-          <a href={`#${id}`} aria-hidden="true">
-            #
-          </a>
-          {children}
+          <span>
+            <a href={`#${id}`} aria-hidden="true">
+              #
+            </a>
+            {children}
+          </span>
         </span>
       </span>
     </h2>

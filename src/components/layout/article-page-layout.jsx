@@ -16,7 +16,7 @@ const styledClassNames = {
     min-height: 200px;
     a {
       color: ${theme`colors.zudo-link`};
-      ${tw`font-bold px-[3px] text-[1.1em]`}
+      ${tw`font-bold px-[3px]`}
       &:visited {
         color: #713f12;
       }
@@ -86,19 +86,22 @@ const styledClassNames = {
       display: table;
     }
     h2 {
-      ${tw`text-lg sm:text-xl pb-vgap-sm pt-vgap-sm font-bold ml-[-1.5em] pl-[1.5em]`}
+      ${tw`text-lg sm:text-xl pb-vgap-md pt-vgap-sm font-bold ml-[-1.5em] pl-[1.5em]`}
       > span {
-        ${tw`inline-block border-t-5 border-black pt-vgap-xs`}
+        ${tw`block border-t-1 border-black`}
         > span {
-          ${tw`block relative`}
-          a,
-          a:visited {
-            ${tw`absolute left-[-1em] font-bold hidden no-underline text-black`}
-            ${tw`top-[0.3em] md:top-[-0.05em]`}
-            ${tw`text-sm md:text-lg`}
-          }
-          a:hover {
-            ${tw`text-white`}
+          ${tw`inline-block border-t-5 border-black pt-vgap-sm mt-[-1px]`}
+          > span {
+            ${tw`block relative`}
+            a,
+            a:visited {
+              ${tw`absolute left-[-1em] font-bold hidden no-underline text-black`}
+              ${tw`top-[0.3em] md:top-0`}
+              ${tw`text-sm md:text-xl`}
+            }
+            a:hover {
+              ${tw`text-white`}
+            }
           }
         }
       }
@@ -136,8 +139,11 @@ const styledClassNames = {
     blockquote {
       ${tw`mb-vgap-md`}
       ${tw`pt-vgap-sm pl-hgap-sm`}
-      ${tw`sm:pt-vgap-md sm:pl-hgap-md`}
+      ${tw`sm:pl-hgap-md`}
       ${tw`border-l-1 border-gray-400`}
+      p {
+        ${tw`pb-vgap-sm`}
+      }
     }
 
     /* PrismJS 1.22.0
