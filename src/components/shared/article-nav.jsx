@@ -98,6 +98,7 @@ const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
             text-sm sm:text-base
             no-underline line-clamp-3
             pt-vgap-sm 
+            sm:h-[6.2em]
           `)}
         >
           <span className={styledClassNames.insideLink}>{excerpt}</span>
