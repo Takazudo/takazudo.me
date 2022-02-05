@@ -79,6 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           tag,
         },
+        defer: true, // make DSG on
       });
     });
   };
