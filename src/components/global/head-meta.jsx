@@ -6,24 +6,6 @@ const format = (template, title) => {
   return template.replace(/%s/g, title);
 };
 
-const tweakImgSrcForOgp = (src) => {
-  if (!src) {
-    return src;
-  }
-  const url = new URL(src);
-  const isImgixSrc = url.host === "images.prismic.io";
-  if (!isImgixSrc) {
-    return src;
-  }
-  // We need following query for suitable for OGP image
-  // ?ar=1200:630&w=2000&fit=crop
-  const params = { ar: "1200:630", w: "2000", fit: "crop" };
-  Object.keys(params).forEach((key) => {
-    url.searchParams.set(key, params[key]);
-  });
-  return url.toString();
-};
-
 const HeadMeta = ({
   pageTitle,
   pageDescription,
@@ -44,7 +26,7 @@ const HeadMeta = ({
     title: pageTitle || siteTitle,
     titleTemplate,
     description: pageDescription || siteDescription,
-    imgUrl: tweakImgSrcForOgp(pageImgUrl) || siteImgUrl,
+    imgUrl: pageImgUrl || siteImgUrl,
     url: `${siteUrl}${path}`,
   };
 
