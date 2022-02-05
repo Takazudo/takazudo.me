@@ -39,7 +39,8 @@ exports.onCreatePage = async ({ page, actions }) => {
       ...page.context,
       blurHash: blurHash,
     },
-    defer: true, // make DSG on
+    // This seems to be bugged. skip this
+    //defer: true, // make DSG on
   });
 };
 
