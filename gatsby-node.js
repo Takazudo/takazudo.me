@@ -39,7 +39,7 @@ exports.onCreatePage = async ({ page, actions }) => {
       ...page.context,
       blurHash: blurHash,
     },
-    //defer: true, // make DSG on
+    defer: true, // make DSG on
   });
 };
 
@@ -79,7 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           tag,
         },
-        //defer: true, // make DSG on
+        defer: true, // make DSG on
       });
     });
   };
