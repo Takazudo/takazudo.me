@@ -68,7 +68,7 @@ const TagListPage = ({ data, location }) => {
           if (tag === "internal") return <></>;
           return (
             <div key={tag}>
-              <Link to={`/tags/${tag}`} className="zudo-invert-color-link">
+              <Link to={`/tags/${tag}/`} className="zudo-invert-color-link">
                 <span className="zudo-hash">#</span>
                 {tag}
               </Link>

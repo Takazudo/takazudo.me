@@ -16,8 +16,8 @@ module.exports = {
     imgUrl: `https://images.prismic.io/takazudo-me/0a24ab4e-571f-451a-89bf-172183074676_densen.png?ar=1200:630&w=2000&fit=crop`,
     globalNav: [
       { href: "/", text: "Home" },
-      { href: "/notes/about", text: "About" },
-      { href: "/tags", text: "Tags" },
+      { href: "/notes/about/", text: "About" },
+      { href: "/tags/", text: "Tags" },
     ],
   },
   plugins: [
@@ -25,6 +25,12 @@ module.exports = {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "UA-216616438-1",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-force-trailing-slashes`,
+      options: {
+        excludedPaths: [`/404.html`],
       },
     },
     "gatsby-plugin-sharp",

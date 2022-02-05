@@ -24,6 +24,9 @@ const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
   if (!/^\//.test(slug)) {
     slug = `/${slug}`;
   }
+  if (!/\/$/.test(slug)) {
+    slug = `${slug}/`;
+  }
   return (
     <Link
       to={slug}
