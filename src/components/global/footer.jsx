@@ -1,20 +1,12 @@
 import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
-import Densen from "../../assets/svgs/densen.svg";
 import { Link } from "../shared/link";
 import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
 const Footer = () => {
   const { globalNav } = useSiteMetadata();
   return (
-    <footer className="pt-vgap-lg">
-      <Densen
-        className={ctl(`
-          w-auto max-w-[1400px] mx-auto
-          mb-[-35px] md:mb-[-40px]
-          pr-[20px] pl-[10px]
-        `)}
-      />
+    <footer>
       <div
         className={ctl(`
           px-hgap-sm
