@@ -13,7 +13,7 @@ module.exports = {
     siteUrl: "https://takazudo.me",
     description: "Notes by @Takazudo.",
     author: `Takazudo`,
-    imgUrl: `https://images.prismic.io/cgbook/5852d55f-9e14-443a-8663-674d742d38ec_2022-01-08+13.16.59.jpg?auto=compress,format&fit=crop&w=1200&h=400`,
+    imgUrl: `https://images.prismic.io/takazudo-me/0a24ab4e-571f-451a-89bf-172183074676_densen.png?ar=1200:630&w=2000&fit=crop`,
     globalNav: [
       { href: "/", text: "Home" },
       { href: "/notes/about", text: "About" },
