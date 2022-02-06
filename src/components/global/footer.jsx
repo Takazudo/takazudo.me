@@ -8,13 +8,15 @@ const Footer = () => {
   const { globalNav } = useSiteMetadata();
   return (
     <footer className="pt-vgap-lg">
-      <Densen
+      <div
         className={ctl(`
-          w-auto max-w-[1400px] mx-auto
-          mb-[-35px] md:mb-[-40px]
+          max-w-[1400px] mx-auto
+          mb-[-32px] md:mb-[-40px]
           pr-[20px] pl-[10px]
         `)}
-      />
+      >
+        <Densen className="w-auto" />
+      </div>
       <div
         className={ctl(`
           px-hgap-sm
