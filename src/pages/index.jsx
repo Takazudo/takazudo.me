@@ -102,7 +102,8 @@ const IndexPage = ({ data }) => {
       <ArticleNav items={items} />
       <ul
         className={ctl(`
-          text-center text-base pt-vgap-md font-futura
+          relative z-10
+          text-center text-base pt-vgap-md pb-vgap-md font-futura
           border-t border-black border-dashed md:border-t-0
         `)}
       >
