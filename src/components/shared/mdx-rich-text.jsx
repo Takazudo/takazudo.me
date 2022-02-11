@@ -66,10 +66,6 @@ const styledClassNames = {
     code {
       ${tw`bg-gray-200 py-[3px] px-[6px] mx-[4px] font-mono`}
     }
-    table {
-      border-collapse: collapse;
-      border-spacing: 0;
-    }
     hr {
       ${tw`pb-vgap-md`}
       ${tw`border-0 border-b-1 border-solid border-black`}
