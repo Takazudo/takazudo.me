@@ -18,18 +18,13 @@ const parsePublishedDateFromPath = (pagePath) => {
   const month = matchResult[2];
   const dayOfMonth = matchResult[3];
   const dayjsObj = dayjs(`${year}-${month}-${dayOfMonth}`, "YYYY-MM-DD");
-  const dayOfWeekNth = dayjsObj.day();
   const unix = dayjsObj.unix();
-  const dayOfWeekEn = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][
-    dayOfWeekNth
-  ];
-  const formattedDateString = `${year}/${month}/${dayOfMonth} (${dayOfWeekEn})`;
+  const formattedDateString = `${year}/${month}/${dayOfMonth}`;
   //console.log(year, month, dayOfMonth, dayOfWeekEn);
   return {
     year,
     month,
     dayOfMonth,
-    dayOfWeekEn,
     formattedDateString,
     unix,
   };
