@@ -74,7 +74,7 @@ exports.createPages = async ({ graphql, actions }) => {
     //console.log(tags);
     tags.forEach((tag) => {
       createPage({
-        path: `/tags/${tag}`,
+        path: `/tags/${tag}/`,
         component: template,
         context: {
           tag,

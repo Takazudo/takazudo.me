@@ -77,7 +77,7 @@ const Article = ({ slug, title, imgUrl, blurHash, excerpt }) => {
         <p
           className={ctl(`
             font-futura no-underline text-gray-500 
-            text-xs sm:text-sm
+            text-xs sm:text-base
             col-span-2   
             tracking-wider
           `)}

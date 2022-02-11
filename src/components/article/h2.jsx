@@ -4,7 +4,8 @@ import { css } from "@emotion/css";
 
 const styledClassNames = {
   h2: css`
-    ${tw`text-lg sm:text-xl pb-vgap-md pt-vgap-md font-bold ml-[-1.5em] pl-[1.5em]`}
+    ${tw`sm:pt-vgap-xs md:pt-vgap-sm`}
+    ${tw`text-lg sm:text-xl pb-vgap-md font-bold ml-[-1.5em] pl-[1.5em]`}
     > span {
       ${tw`block border-t-1 border-black`}
       > span {
