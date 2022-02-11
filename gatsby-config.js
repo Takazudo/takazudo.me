@@ -80,7 +80,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/templates/mdx-layout.jsx"),
+          default: require.resolve("./src/templates/article-page-layout.jsx"),
         },
         //gatsbyRemarkPlugins: ["gatsby-remark-table-of-contents"],
         remarkPlugins: [
