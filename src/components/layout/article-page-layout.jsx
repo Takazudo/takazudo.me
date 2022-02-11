@@ -85,43 +85,6 @@ const styledClassNames = {
       content: "";
       display: table;
     }
-    h2 {
-      ${tw`text-lg sm:text-xl pb-vgap-md pt-vgap-sm font-bold ml-[-1.5em] pl-[1.5em]`}
-      > span {
-        ${tw`block border-t-1 border-black`}
-        > span {
-          ${tw`inline-block border-t-5 border-black pt-vgap-sm mt-[-1px]`}
-          > span {
-            ${tw`block relative`}
-            a,
-            a:visited {
-              ${tw`absolute left-[-1em] font-bold hidden no-underline text-black`}
-              ${tw`top-[0.3em] md:top-0`}
-              ${tw`text-sm md:text-xl`}
-            }
-            a:hover {
-              ${tw`text-white`}
-            }
-          }
-        }
-      }
-      &:hover > span > span a {
-        ${tw`block`}
-      }
-    }
-    h3 {
-      ${tw`text-base sm:text-lg pb-vgap-xs font-bold ml-[-1.5em] pl-[1.5em]`}
-      > span {
-        ${tw`block relative`}
-        a,
-        a:visited {
-          ${tw`absolute left-[-1em] top-[-0.05em] font-bold hidden no-underline text-black`}
-        }
-      }
-      &:hover > span a {
-        ${tw`block`}
-      }
-    }
     h4 {
       ${tw`font-bold`}
     }
