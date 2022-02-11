@@ -89,22 +89,28 @@ const styledClassNames = {
       ${tw`font-bold`}
     }
     p {
-      ${tw`pb-vgap-md`}
+      ${tw`pb-vgap-md mt-[-0.3em]`}
     }
     ul {
       ${tw`list-disc`}
-      ${tw`ml-hgap-md pb-vgap-md space-y-vgap-xs`}
+      ${tw`ml-hgap-md pb-vgap-md space-y-vgap-xs mt-[-0.3em]`}
+      ul {
+        ${tw`ml-hgap-sm mt-vgap-sm pb-vgap-xs`}
+      }
     }
     ol {
       ${tw`list-decimal`}
-      ${tw`ml-hgap-md pb-vgap-md space-y-vgap-xs`}
+      ${tw`ml-hgap-md pb-vgap-md space-y-vgap-xs mt-[-0.3em]`}
+      ol {
+        ${tw`ml-hgap-sm mt-vgap-sm pb-vgap-xs`}
+      }
     }
     blockquote {
       ${tw`mb-vgap-md`}
       ${tw`pt-vgap-sm pl-hgap-sm`}
       ${tw`sm:pl-hgap-md`}
       ${tw`border-l-1 border-gray-400`}
-      p {
+      p:last-child {
         ${tw`pb-vgap-sm`}
       }
     }

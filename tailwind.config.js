@@ -12,11 +12,11 @@ const spacingConfig = createTailwindSpacingConfig({
   "hgap-lg": 60,
   "hgap-xl": 100,
   "vgap-2xs": 4,
-  "vgap-xs": 7,
-  "vgap-sm": 15,
-  "vgap-md": 30,
-  "vgap-lg": 45,
-  "vgap-xl": 60,
+  "vgap-xs": 8,
+  "vgap-sm": 16,
+  "vgap-md": 32,
+  "vgap-lg": 48,
+  "vgap-xl": 56,
 });
 
 module.exports = {

@@ -86,6 +86,8 @@ module.exports = {
         remarkPlugins: [
           require("remark-external-links"),
           require("remark-breaks"),
+          // enable attr syntax for img elements
+          [require("remark-attr"), { elements: ["link"] }],
         ],
         rehypePlugins: [
           require("rehype-slug"),

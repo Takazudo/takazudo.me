@@ -4,7 +4,7 @@ import ctl from "@netlify/classnames-template-literals";
 
 const MAX_IMG_SIZE = 1800;
 
-const Img = ({ src, alt }) => {
+const Img = ({ src, alt, className }) => {
   let InsideComponent;
 
   const url = new URL(src);
@@ -68,23 +68,16 @@ const Img = ({ src, alt }) => {
   return (
     <span
       className={ctl(`
-          flex justify-center
-        `)}
+        flex justify-center
+        ${className}
+      `)}
     >
       <span
         className={ctl(`
-          flex justify-center
-          ${wide && "lg:w-5/6"}
-          ${tall && "md:w-2/3 lg:w-1/2"}
+          block border border-gray-500
         `)}
       >
-        <span
-          className={ctl(`
-            border border-gray-500
-          `)}
-        >
-          <InsideComponent />
-        </span>
+        <InsideComponent />
       </span>
     </span>
   );
