@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import ctl from "@netlify/classnames-template-literals";
 import { Link } from "../components/shared/link";
 import { HeadMeta } from "../components/global/head-meta";
+import { PageTitle } from "../components/shared/page-title";
 
 export const query = graphql`
   query TagListPageQuery {
@@ -41,23 +42,11 @@ const TagListPage = ({ data, location }) => {
         isArticle={false}
         path={location.pathname}
       />
-      <h1
-        className={ctl(`
-          border-black 
-          border-t-5 md:border-t-[10px]
-          max-w-[1280px] mx-auto px-hgap-sm
-          pt-vgap-md sm:pt-vgap-lg
-          sm:pb-vgap-md
-          font-futura text-xl sm:text-2xl
-          text-center
-        `)}
-      >
-        Tags
-      </h1>
+      <PageTitle>Tags</PageTitle>
       <div
         className={ctl(`
           box-content
-          max-w-[1040px] mx-auto px-hgap-sm pt-vgap-md pb-vgap-md
+          max-w-[820px] mx-auto px-hgap-sm pt-vgap-md pb-vgap-md
           flex flex-wrap
           font-futura text-lg sm:text-xl
           gap-x-hgap-sm sm:gap-x-hgap-md
