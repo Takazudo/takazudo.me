@@ -1,4 +1,4 @@
-import * as React from "react";
+import { default as React, useMemo } from "react";
 import { css } from "@emotion/css";
 import ctl from "@netlify/classnames-template-literals";
 import tw from "twin.macro";
@@ -137,6 +137,12 @@ const ItemsWrapper = ({ children, open }) => {
 };
 
 const MenuFlyout = ({ className, items = [] }) => {
+  const refinedItems = useMemo(() => {
+    const refined = [...items];
+    refined.push({ href: "/search/", text: "Search" });
+    return refined;
+  }, [items]);
+
   return (
     <div className={className}>
       <Menu>
@@ -159,7 +165,7 @@ const MenuFlyout = ({ className, items = [] }) => {
                   space-y-vgap-xs sm:space-y-vgap-sm
                 `)}
               >
-                {items.map((item) => (
+                {refinedItems.map((item) => (
                   <Menu.Item key={item.href}>
                     {({ active }) => (
                       <Link

@@ -1,6 +1,7 @@
 import * as React from "react";
 import ctl from "@netlify/classnames-template-literals";
 import Densen from "../../assets/svgs/densen.svg";
+import SearchIcon from "../../assets/svgs/search.svg";
 import { Link } from "../shared/link";
 import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
@@ -44,6 +45,11 @@ const Footer = () => {
                   </li>
                 );
               })}
+              <li key="search">
+                <Link to="/search/" className="zudo-invert-color-link block">
+                  <SearchIcon className="w-[1.4em] h-[1.4em] inline-block align-middle" />
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

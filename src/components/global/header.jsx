@@ -3,6 +3,7 @@ import ctl from "@netlify/classnames-template-literals";
 import { Link } from "../shared/link";
 import { MenuFlyout } from "./menu-flyout";
 import { useSiteMetadata } from "../../hooks/use-site-metadata";
+import SearchIcon from "../../assets/svgs/search.svg";
 
 const Header = ({ logoTagName = "div" }) => {
   const { globalNav } = useSiteMetadata();
@@ -38,6 +39,11 @@ const Header = ({ logoTagName = "div" }) => {
                 </li>
               );
             })}
+            <li key="search">
+              <Link to="/search/" className="zudo-invert-color-link block">
+                <SearchIcon className="w-[1.4em] h-[1.4em] inline-block align-middle" />
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>
