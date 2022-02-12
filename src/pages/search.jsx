@@ -3,6 +3,7 @@ import ctl from "@netlify/classnames-template-literals";
 import tw from "twin.macro";
 import { css } from "@emotion/css";
 import { Link } from "../components/shared/link";
+import { HeadMeta } from "../components/global/head-meta";
 import { PageTitle } from "../components/shared/page-title";
 import SearchIcon from "../assets/svgs/search.svg";
 import algoliasearch from "algoliasearch/lite";
@@ -74,7 +75,7 @@ const Hit = ({ hit }) => {
   );
 };
 
-const SearchPage = () => {
+const SearchPage = ({ location }) => {
   const searchClient = useMemo(
     () =>
       algoliasearch(
@@ -84,33 +85,41 @@ const SearchPage = () => {
     []
   );
   return (
-    <InstantSearch searchClient={searchClient} indexName="Pages">
-      <PageTitle tagName="div">
-        <div className="flex justify-center mx-auto">
-          <div className="flex items-center pr-hgap-xs">
-            <SearchIcon
-              className={ctl(`
+    <>
+      <HeadMeta
+        pageTitle="検索"
+        pageDescription="takazudo.meのサイト内検索"
+        isArticle={false}
+        path={location.pathname}
+      />
+      <InstantSearch searchClient={searchClient} indexName="Pages">
+        <PageTitle tagName="div">
+          <div className="flex justify-center mx-auto">
+            <div className="flex items-center pr-hgap-xs">
+              <SearchIcon
+                className={ctl(`
                 w-[1.2em] h-[1.2em]
               `)}
+              />
+            </div>
+            <SearchBox
+              autoFocus
+              defaultRefinement={null}
+              translations={{
+                placeholder: "Search for...",
+              }}
+              className={styledClassNames.searchForm}
+              submit={null}
+              reset={null}
             />
           </div>
-          <SearchBox
-            autoFocus
-            defaultRefinement={null}
-            translations={{
-              placeholder: "Search for...",
-            }}
-            className={styledClassNames.searchForm}
-            submit={null}
-            reset={null}
-          />
+        </PageTitle>
+        <div className="max-w-[820px] mx-auto px-hgap-sm">
+          <Hits hitComponent={Hit} />
         </div>
-      </PageTitle>
-      <div className="max-w-[820px] mx-auto px-hgap-sm">
-        <Hits hitComponent={Hit} />
-      </div>
-      {/* <Pagination /> */}
-    </InstantSearch>
+        {/* <Pagination /> */}
+      </InstantSearch>
+    </>
   );
 };
 
