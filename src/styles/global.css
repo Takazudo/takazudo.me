@@ -6,6 +6,9 @@
   body {
     @apply text-base font-sans;
   }
+  input[type="search"] {
+    -webkit-appearance: none;
+  }
   a {
     @apply underline outline-none;
   }

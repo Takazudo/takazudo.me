@@ -18,20 +18,9 @@ import {
 // reference about algolia: https://www.gatsbyjs.com/docs/adding-search-with-algolia/
 
 const styledClassNames = {
-  insideLink: css`
-    ${tw`group-hover:text-white`}
-    ${tw`group-hover:bg-black`}
-    ${tw`group-hover:text-shadow-none`}
-    ${tw`group-focus:text-white`}
-    ${tw`group-focus:bg-black`}
-    ${tw`group-focus:text-shadow-none`}
-    em {
-      ${tw`group-hover:text-white`}
-      ${tw`group-focus:text-white`}
-    }
-  `,
   searchForm: css`
     input[type="search"] {
+      ${tw`rounded-none`}
       ${tw`w-[260px] sm:w-auto`}
       ${tw`px-hgap-sm py-vgap-xs`}
       ${tw`border-3 border-black`}
@@ -47,8 +36,25 @@ const styledClassNames = {
       ${tw`py-vgap-md border-dashed`}
     }
     em {
-      ${tw`font-bold not-italic`}
       color: #ef4444;
+      ${tw`font-bold not-italic`}
+      ${tw`group-hover:text-white`}
+      ${tw`group-focus:text-white`}
+      ${tw`group-active:text-white`}
+    }
+  `,
+  bgBlackLine: css`
+    &,
+    * {
+      ${tw`group-hover:text-white`}
+      ${tw`group-hover:bg-black`}
+      ${tw`group-hover:text-shadow-none`}
+      ${tw`group-focus:text-white`}
+      ${tw`group-focus:bg-black`}
+      ${tw`group-focus:text-shadow-none`}
+      ${tw`group-active:text-white`}
+      ${tw`group-active:bg-black`}
+      ${tw`group-active:text-shadow-none`}
     }
   `,
 };
@@ -58,14 +64,12 @@ const Hit = ({ hit }) => {
     <article className={styledClassNames.hitContainer}>
       <Link to={`/${hit.slug}/`} className="group no-underline">
         <h2 className="text-lg font-bold underline">
-          <Highlight
-            attribute="title"
-            hit={hit}
-            className={styledClassNames.insideLink}
-          />
+          <span className={styledClassNames.bgBlackLine}>
+            <Highlight attribute="title" hit={hit} />
+          </span>
         </h2>
         <p className="pt-vgap-sm">
-          <span className={styledClassNames.insideLink}>
+          <span className={styledClassNames.bgBlackLine}>
             <Snippet attribute="excerpt" hit={hit} />
             ...
           </span>
@@ -114,7 +118,7 @@ const SearchPage = ({ location }) => {
             />
           </div>
         </PageTitle>
-        <div className="max-w-[820px] mx-auto px-hgap-sm">
+        <div className="max-w-[820px] mx-auto px-hgap-sm mb-vgap-sm">
           <Hits hitComponent={Hit} />
         </div>
         {/* <Pagination /> */}

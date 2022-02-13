@@ -13,6 +13,9 @@ const styledClassNames = {
     group-focus:text-white
     group-focus:bg-black
     group-focus:text-shadow-none
+    group-active:text-white
+    group-active:bg-black
+    group-active:text-shadow-none
   `),
 };
 
