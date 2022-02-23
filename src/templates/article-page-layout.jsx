@@ -33,7 +33,28 @@ const Tag = ({ text }) => {
   );
 };
 
-const HeroImg = ({ src, blurHash }) => {
+const HeroImg = ({ src, heroImgOptions, blurHash }) => {
+  const wideExtender =
+    heroImgOptions && heroImgOptions.wide ? heroImgOptions.wide : {};
+  const imgixParams_wide = Object.assign(
+    {
+      auto: ["format", "compress"],
+      fit: "crop",
+      ar: "3:1",
+    },
+    wideExtender
+  );
+  console.log(imgixParams_wide)
+  const narrowExtender =
+    heroImgOptions && heroImgOptions.narrow ? heroImgOptions.narrow : {};
+  const imgixParams_narrow = Object.assign(
+    {
+      auto: ["format", "compress"],
+      fit: "crop",
+      ar: "3:2",
+    },
+    narrowExtender
+  );
   return (
     <div
       className={ctl(`
@@ -51,11 +72,7 @@ const HeroImg = ({ src, blurHash }) => {
         </div>
         <ImgixGatsbyImage
           src={src}
-          imgixParams={{
-            auto: ["format", "compress"],
-            fit: "crop",
-            ar: "3:1",
-          }}
+          imgixParams={imgixParams_wide}
           breakpoints={[580, 820, 1240]}
           layout="constrained"
           className="w-full relative z-10"
@@ -72,11 +89,7 @@ const HeroImg = ({ src, blurHash }) => {
         </div>
         <ImgixGatsbyImage
           src={src}
-          imgixParams={{
-            auto: ["format", "compress"],
-            fit: "crop",
-            ar: "3:2",
-          }}
+          imgixParams={imgixParams_narrow}
           breakpoints={[440]}
           layout="constrained"
           className="w-full relative z-10"
@@ -205,7 +218,14 @@ const ShareBarRightTop = ({ pageUrl, title }) => {
 const Layout = ({ pageContext, children, location }) => {
   const {
     blurHash,
-    frontmatter: { title, description, heroImgUrl, tags, customExcerpt },
+    frontmatter: {
+      title,
+      description,
+      heroImgUrl,
+      heroImgOptions,
+      tags,
+      customExcerpt,
+    },
   } = pageContext;
   const { siteUrl } = useSiteMetadata();
   //console.log(blurHash);
@@ -227,7 +247,11 @@ const Layout = ({ pageContext, children, location }) => {
         isArticle={true}
         path={location.pathname}
       />
-      <HeroImg src={heroImgUrl} blurHash={blurHash} />
+      <HeroImg
+        src={heroImgUrl}
+        blurHash={blurHash}
+        heroImgOptions={heroImgOptions}
+      />
       <div
         className={ctl(`
           md:grid 
