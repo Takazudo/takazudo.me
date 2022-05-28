@@ -38,6 +38,7 @@ const Img = ({ src, alt, className }) => {
   }
 
   if (isImgixSrc && !aspectRatio) {
+    console.log(src);
     throw new Error(`imgix's src needs to have w and q on its query`);
   }
 
