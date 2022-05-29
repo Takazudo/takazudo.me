@@ -1,54 +1,39 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# takazudo.me
 
-## 🚀 Quick start
+## dev & build
 
-1.  **Create a Gatsby site.**
+to develop
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+```
+npm run dev
+```
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+to build
 
-2.  **Start developing.**
+```
+npm run build
+```
 
-    Navigate into your new site’s directory and start it up.
+## package update notes
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+### mdx stuff
 
-3.  **Open the code and start customizing!**
+```
+@mdx-js/mdx
+@mdx-js/react
+```
 
-    Your site is now running at http://localhost:8000!
+Updates these made dependency problem. so these are still 1.X.
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+### rehype, remark
 
-4.  **Learn more**
+```
+rehype-slug
+rehype-stringify
+remark-attr
+remark-breaks
+remark-external-links
+```
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+The latest versions of these packages are ES modules. Gatsby's config files don't support ES modules yet. so there can't be upgraded.
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
