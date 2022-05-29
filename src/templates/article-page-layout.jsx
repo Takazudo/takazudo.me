@@ -44,7 +44,7 @@ const HeroImg = ({ src, heroImgOptions, blurHash }) => {
     },
     wideExtender
   );
-  console.log(imgixParams_wide)
+  //console.log(imgixParams_wide)
   const narrowExtender =
     heroImgOptions && heroImgOptions.narrow ? heroImgOptions.narrow : {};
   const imgixParams_narrow = Object.assign(
