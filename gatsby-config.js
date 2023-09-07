@@ -19,6 +19,7 @@ const plugins = [
       excludedPaths: [`/404.html`],
     },
   },
+  "gatsby-plugin-netlify",
   "gatsby-plugin-sharp",
   "gatsby-plugin-react-helmet",
   "gatsby-plugin-sitemap",
